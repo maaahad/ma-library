@@ -1,17 +1,17 @@
 import "../styles/globals.css";
 
+// component
 import Layout from "../components/layout";
+
+// themes
+import lightTheme from "../themes/light";
 
 // setting up theme from react-jss
 import { ThemeProvider } from "react-jss";
 
-const theme = {
-  color: "red",
-};
-
 function MyApp({ Component, pageProps }) {
   return (
-    <ThemeProvider theme={theme}>
+    <ThemeProvider theme={lightTheme}>
       <Layout>
         <Component {...pageProps} />
       </Layout>
