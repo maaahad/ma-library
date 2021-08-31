@@ -1,0 +1,50 @@
+// mixins
+
+// placeholder class 
+%flex-center
+    display: flex
+    align-items: center
+    justify-content: center
+%flex-row-col-center
+    display: flex
+    flex-flow: row nowrap
+    align-items: center
+
+.container
+    @extend %flex-row-col-center
+    justify-content: space-between
+    width: 100%
+
+.logo
+    @extend %flex-center
+
+.right_nav
+    flex: 1
+    @extend %flex-row-col-center
+    justify-content: flex-end
+    & > * + *
+        margin-inline-start: 10px
+    & > div
+        @extend %flex-center
+
+.theme, .storage
+    @extend %flex-center
+    input
+        display: none
+    input + label
+        cursor: pointer
+    input + label > div
+        @extend %flex-center
+        width: 30px
+        height: 30px
+        background-color: #48e98e
+        border-radius: 50%
+        transition: all .3s linear
+        & > svg
+            transition: all .3s linear
+            width: 10px
+            height: 10px
+    input + label > div:hover
+        & > svg
+            width: 16px
+            height: 16px
