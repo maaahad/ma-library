@@ -27,6 +27,7 @@ const useStyles = createUseStyles((theme) => ({
     left: 0,
   },
   main: {
+    // nav height + 10px
     marginTop: 70,
     flex: 1,
   },

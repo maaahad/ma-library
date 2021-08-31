@@ -10,6 +10,7 @@ const theme = {
   },
   transitions: {
     all: "all .3s ease-in",
+    opacity: "opacity .5s linear",
   },
 };
 

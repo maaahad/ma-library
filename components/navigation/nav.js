@@ -4,7 +4,9 @@
 
 // react-icons
 
-import { FaSun } from "react-icons/fa";
+import { FaSun, FaMoon, FaCloud, FaDatabase } from "react-icons/fa";
+import { AiFillDatabase, AiOutlineCloud } from "react-icons/ai";
+import { BiMoon, BiSun, BiCloud, BiData, BiLogInCircle } from "react-icons/bi";
 
 // components
 
@@ -25,7 +27,7 @@ const useStyles = createUseStyles((theme) => ({
     "& > *": {
       height: "100%",
     },
-    backgroundColor: "grey",
+    backgroundColor: "rgba(255, 0, 0, .1)",
   },
   logo: {
     // backgroundColor: "red",
@@ -41,11 +43,32 @@ const useStyles = createUseStyles((theme) => ({
       marginLeft: 10,
     },
   },
+  storageOption: {
+    display: "flex",
+    flexFlow: "row nowrap",
+    alignItems: "center",
+    justifyContent: "center",
+  },
   themeOption: {
     display: "flex",
     flexFlow: "row nowrap",
     alignItems: "center",
     justifyContent: "center",
+  },
+  login: {
+    display: "flex",
+    flexFlow: "row nowrap",
+    alignItems: "center",
+    justifyContent: "center",
+    // transition: theme.transitions.all,
+    // "& > span": {
+    //   display: "none",
+    // },
+    // "&:hover": {
+    //   "& > span": {
+    //     display: "inline-block",
+    //   },
+    // },
   },
 }));
 
@@ -57,10 +80,18 @@ export default function Nav() {
         <h4>MA-Library</h4>
       </div>
       <div className={classes.rightNav}>
-        <div className={classes.themeOption}>
-          <FaSun />
+        <div className={classes.storageOption}>
+          <BiCloud />
+          <BiData />
         </div>
-        <div>Login</div>
+        <div className={classes.themeOption}>
+          <BiSun />
+          <BiMoon />
+        </div>
+        <div className={classes.login}>
+          <span>Login</span>
+          <BiLogInCircle />
+        </div>
       </div>
     </nav>
   );

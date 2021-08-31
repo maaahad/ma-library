@@ -3,8 +3,12 @@
 // next
 import Head from "next/head";
 
+// react-icons
+import { BiCodeAlt, BiInfoCircle } from "react-icons/bi";
+
 // components
 import MainTop from "../components/mainTop";
+import Books from "../components/books";
 
 // react-jss
 import { createUseStyles } from "react-jss";
@@ -26,12 +30,12 @@ const useStyles = createUseStyles((theme) => ({
     left: 0,
     transition: theme.transitions.all,
   },
-
-  books: {
-    backgroundColor: "red",
+  mainTop: {
+    marginBottom: 10,
   },
+  books: {},
 
-  "@media screen and (min-width: 600px)": {
+  "@media screen and (min-width: 720px)": {
     sourceNInfo: {
       left: "calc(100% - 20px)",
     },
@@ -54,12 +58,15 @@ export default function Home() {
         <MainTop />
       </div>
       <div className={classes.sourceNInfo}>
-        <div>S</div>
-        <div>I</div>
+        <div>
+          <BiInfoCircle />
+        </div>
+        <div>
+          <BiCodeAlt />
+        </div>
       </div>
       <div className={classes.books}>
-        <div>Category + Filter + Sorting</div>
-        <div>Books Tablelist / Card list</div>
+        <Books />
       </div>
     </div>
   );
