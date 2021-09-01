@@ -27,32 +27,9 @@ export default function Nav() {
         <h4>MA-Library</h4>
       </div>
       <div className={Styles.right_nav}>
-        <div className={Styles.storage}>
-          <input
-            type="checkbox"
-            checked={localStorage}
-            onChange={() => toggleStorage()}
-            id="storage"
-          />
-          <label htmlFor="storage">
-            {localStorage ? (
-              <div>
-                <BiCloud />
-              </div>
-            ) : (
-              <div>
-                <BiData />
-              </div>
-            )}
-          </label>
-        </div>
-
-        <ThemeSwitch />
-
-        <div>
-          <span>Login</span>
-          <BiLogInCircle />
-        </div>
+        <div className={Styles.storage}>Storage</div>
+        <div className={Styles.theme}>theme</div>
+        <div className={Styles.login}>Login</div>
       </div>
     </nav>
   );

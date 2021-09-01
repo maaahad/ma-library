@@ -19,7 +19,7 @@ export default function ThemeSwitch() {
         id="theme"
       />
       <label htmlFor="theme" className={Styles.toggleWrapper}>
-        <div className={Styles.icon}></div>
+        <div className={Styles.toggle}></div>
         {/* <div className={Styles.icon}>{lightTheme ? <BiSun /> : <BiMoon />}</div> */}
       </label>
     </div>

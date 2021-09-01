@@ -1,0 +1,68 @@
+// ------------------------ variables ------------------------- //
+// breakpoints
+// text, icon color
+$primary_color: #313131
+$secondary_color: #6d6d6d
+$tertiary_color: #9e9e9e
+
+// background color
+$bg_color_primary: #fff
+$bg_color_secondary: #000
+$bg_color_form_input: #f4f4f4
+
+// border
+$border_color_primary: #e4e4e4
+
+// zindex
+$zindex_nav: 100
+$zindex_fab: 101
+
+// ------------------------ mixins ------------------------- //
+// mixins for text
+@mixin titleText($textColor: $primary_color)
+    font-size: 20px
+    line-height: 24px
+    letter-spacing: normal
+    font-weight: 500
+    color: $textColor
+
+@mixin subtitleText($textColor: $primary_color)
+    font-size: .81rem
+    line-height: 1.25rem
+    font-weight: 500
+    color: $textColor
+
+@mixin normalText($textColor: $primary_color)
+    font-size: 12px
+    line-height: 15px
+    letter-spacing: .3px
+
+@mixin subNormalText($textColor: $primary_color)
+    font-size: 10px
+    line-height: 12px
+    letter-spacing: .2px
+    color: $textColor
+
+// mixins for flex
+@mixin flexCenter
+    display: flex
+    align-items: center
+    justify-content: center
+
+// @mixin flexRowColCenter($rowAlign: space-between)
+//     display: flex
+//     flex-flow: row nowrap
+//     align-items: center
+//     justify-content: $rowAlign
+
+// @mixin flexRowWrapColCenter($rowAlign: space-between)
+//     display: flex
+//     flex-flow: row wrap
+//     align-items: center
+//     justify-content: $rowAlign
+
+// @mixin flexColWrapColStretch($rowAlign: space-between)
+//     display: flex
+//     flex-flow: column wrap
+//     align-items: stretch
+//     justify-content: $rowAlign

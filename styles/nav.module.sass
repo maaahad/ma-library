@@ -1,48 +1,50 @@
-// mixins
+@use "lightTheme"
 
-// placeholder class 
-%flex-center
-    display: flex
-    align-items: center
-    justify-content: center
-%flex-row-col-center
+.container
+    width: 100%
     display: flex
     flex-flow: row nowrap
     align-items: center
-
-.container
-    @extend %flex-row-col-center
     justify-content: space-between
-    width: 100%
 
 .logo
-    @extend %flex-center
+    h4
+        @include lightTheme.titleText($textColor: lightTheme.$primary_color)
 
 .right_nav
     flex: 1
-    @extend %flex-row-col-center
+    display: flex
+    flex-flow: row nowrap
+    align-items: center
     justify-content: flex-end
     & > * + *
         margin-inline-start: 10px
 
-.storage
-    @extend %flex-center
-    input
-        display: none
-    input + label
-        cursor: pointer
-    input + label > div
-        @extend %flex-center
-        width: 30px
-        height: 30px
-        background-color: #48e98e
-        border-radius: 50%
-        transition: all .3s linear
-        & > svg
-            transition: all .3s linear
-            width: 10px
-            height: 10px
-    input + label > div:hover
-        & > svg
-            width: 16px
-            height: 16px
+    .login
+        @include lightTheme.subtitleText($textColor: lightTheme.$primary_color)
+
+    .storage
+        @include lightTheme.subtitleText($textColor: lightTheme.$secondary_color)
+
+    .theme
+        @include lightTheme.subtitleText($textColor: lightTheme.$secondary_color)
+
+// .storage
+//     input
+//         display: none
+//     input + label
+//         cursor: pointer
+//     input + label > div
+//         width: 30px
+//         height: 30px
+//         background-color: #48e98e
+//         border-radius: 50%
+//         transition: all .3s linear
+//         & > svg
+//             transition: all .3s linear
+//             width: 10px
+//             height: 10px
+//     input + label > div:hover
+//         & > svg
+//             width: 16px
+//             height: 16px
