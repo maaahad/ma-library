@@ -7,6 +7,7 @@ import React, { useState, useReducer } from "react";
 import { BiMoon, BiSun, BiCloud, BiData, BiLogInCircle } from "react-icons/bi";
 
 // components
+import ThemeSwitch from "./themeSwitch";
 
 // sass stylesheets
 import Styles from "../styles/nav.module.sass";
@@ -33,7 +34,7 @@ export default function Nav() {
             onChange={() => toggleStorage()}
             id="storage"
           />
-          <label for="storage">
+          <label htmlFor="storage">
             {localStorage ? (
               <div>
                 <BiCloud />
@@ -45,25 +46,9 @@ export default function Nav() {
             )}
           </label>
         </div>
-        <div className={Styles.theme}>
-          <input
-            type="checkbox"
-            checked={lighttheme}
-            onChange={() => toggleTheme()}
-            id="theme"
-          />
-          <label for="theme">
-            {lighttheme ? (
-              <div>
-                <BiSun />
-              </div>
-            ) : (
-              <div>
-                <BiMoon />
-              </div>
-            )}
-          </label>
-        </div>
+
+        <ThemeSwitch />
+
         <div>
           <span>Login</span>
           <BiLogInCircle />
