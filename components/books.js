@@ -4,21 +4,22 @@
 import FilterNSort from "./filterNsort";
 import BookCard from "./bookCard";
 
+// in-house library
+import { useLibrary } from "./libraryProvider";
+
 // sass styles
 import Styles from "../styles/books.module.sass";
 
-// temp array to test book  list
-const createArray = (length) => [...new Array(length)];
-
 export default function Books() {
+  const { library } = useLibrary();
   return (
     <div className={Styles.container}>
       <div className={Styles.filterNsort}>
         <FilterNSort />
       </div>
       <div className={Styles.books}>
-        {createArray(10).map((book, index) => (
-          <BookCard key={index} />
+        {library.map((book, index) => (
+          <BookCard key={index} book={book} />
         ))}
       </div>
     </div>

@@ -18,14 +18,36 @@
         background-color: lightTheme.$bg_color_primary
         border-block-end: 1px solid lightTheme.$border_color_primary
     main
-        // position: relative
         flex: 1
         margin-block-start: 80px
         padding: 0 20px 10px 20px
         background-color: lightTheme.$bg_color_primary
 
     footer
-        @include lightTheme.subNormalText($textColor: lightTheme.$secondary_color)
-        height: 30px
-        padding: 5px 20px
+        @include lightTheme.normalText($textColor: lightTheme.$secondary_color)
+        height: 50px
+        padding: 10px 20px
         background-color: lightTheme.$bg_color_primary
+        border-block-start: 1px solid lightTheme.$border_color_primary
+        display: flex
+        flex-flow: row nowrap
+        align-items: center
+        justify-content: center
+
+        & svg
+            width: 20px
+            height: 20px
+
+        & > div
+            display: flex
+            flex-flow: row nowrap
+            align-items: center
+            justify-content: center
+
+            & > * + *
+                margin-inline-start: 5px
+        & > div > div
+            @include lightTheme.flexCenter
+
+        & > div > span
+            text-transform: uppercase

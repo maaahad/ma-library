@@ -39,23 +39,41 @@
         & > * + *
             margin-block-start: 5px
 
-        & > *
+    .status
+        // @include lightTheme.flexCenter
+        & > input
+            display: none
+
+        .toggleWrapper
             @include lightTheme.flexCenter
             width: 20px
             height: 20px
             border-radius: 50%
             cursor: pointer
+            background-color: lightTheme.$book_not_read
 
         & svg
             width: 14px
             height: 14px
             color: white
 
-        .status
-            background-color: green
+    input:checked
+        // important to use adjacent sibling combinator
+        & + .toggleWrapper
+            background-color: lightTheme.$book_read
 
-        .edit
-            background-color: lightTheme.$bg_color_secondary
+    .edit
+        @include lightTheme.flexCenter
+        width: 20px
+        height: 20px
+        border-radius: 50%
+        cursor: pointer
+        background-color: lightTheme.$bg_color_secondary
+
+        & svg
+            width: 14px
+            height: 14px
+            color: white
 
 .cardActions
     padding: 10px 15px
@@ -64,13 +82,25 @@
     align-items: center
     justify-content: space-between
 
-    .likeComment
+    .likesComments
         display: flex
         flex-flow: row nowrap
         align-items: center
         justify-content: flex-start
 
-        & > *
+        & > * + *
+            margin-inline-start: 15px
+
+    .likes, .comments
+        display: flex
+        flex-flow: row nowrap
+        align-items: center
+        justify-content: space-between
+
+        & > * + *
+            margin-inline-start: 2px
+
+        & > div
             @include lightTheme.flexCenter
             height: 20px
             width: 20px
@@ -85,12 +115,12 @@
                 & > svg
                     color: white
 
-        & > * + *
-            margin-inline-start: 10px
-
         & svg
             height: 14px
             width: 14px
+            color: lightTheme.$primary_color
+
+        & > span
             color: lightTheme.$primary_color
 
     .removeMe

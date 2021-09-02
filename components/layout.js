@@ -1,8 +1,12 @@
 // react
 // next
 
+// react icons
+import { BiCopyright } from "react-icons/bi";
+
 // components
 import Nav from "./nav";
+import LibraryProvider from "./libraryProvider";
 
 // sass
 import Styles from "../styles/layout.module.sass";
@@ -13,9 +17,17 @@ export default function Layout({ children }) {
       <header>
         <Nav />
       </header>
-      <main>{children}</main>
+      <LibraryProvider>
+        <main>{children}</main>
+      </LibraryProvider>
       <footer>
-        <div>Developed by Muhammed Ahad</div>
+        <div>
+          <div>
+            <BiCopyright />
+          </div>
+          {/* make this a link */}
+          <span>Muhammed Ahad</span>
+        </div>
       </footer>
     </div>
   );

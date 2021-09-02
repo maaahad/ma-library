@@ -15,8 +15,8 @@ export default function MainTop() {
     <div className={Styles.container}>
       <div className={Styles.summary}>
         <p>Total Books : 1000</p>
-        <p>Number of Books read: 40</p>
-        <p>Number of Books to read: 960</p>
+        <p>Number of Books read : 40</p>
+        <p>Number of Books to be read : 960</p>
       </div>
       <div className={Styles.interaction}>
         <div className={Styles.clearStore} title="Clear Store">

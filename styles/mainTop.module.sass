@@ -50,14 +50,20 @@
                 color: #fff
 
     .summary
-        background-color: lightTheme.$bg_color_primary
-        border: 1px solid lightTheme.$primary_color
-        border-radius: 5px
+        background-color: lightTheme.$bg_color_secondary
+        // border: 1px solid lightTheme.$primary_color
+        color: white
+        // border-radius: 5px
         padding: 10px
+        display: flex
+        flex-flow: column nowrap
+        align-items: center
+        justify-content: center
         & > p
             margin: 0
             padding: 0
-            @include lightTheme.normalText($textColor: lightTheme.$primary_color)
-            text-align: center
+            @include lightTheme.subtitleText($textColor: white)
+            text-align: left
+            text-transform: uppercase
         & > p + p
             margin-block-start: 5px
