@@ -1,0 +1,19 @@
+@use "lightTheme"
+
+.container
+    height: 40px
+    border-radius: 20px
+    border: 1px solid lightTheme.$border_color_primary
+    padding: 0 15px
+    display: flex
+    flex-flow: row nowrap
+    align-items: center
+    justify-content: space-between
+
+    & > *
+        color: lightTheme.$primary_color
+
+    .divider
+        width: 1px
+        height: 90%
+        background-color: lightTheme.$border_color_primary

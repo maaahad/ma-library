@@ -10,29 +10,35 @@ import { BiCodeAlt, BiInfoCircle } from "react-icons/bi";
 import MainTop from "../components/mainTop";
 import Books from "../components/books";
 
+// sass styls
+import Styles from "../styles/home.module.sass";
+
 export default function Home() {
   return (
-    <div>
+    <div className={Styles.container}>
       <Head>
-        <title>MA - Library</title>
+        <title>MA-Library</title>
         <meta
           name="description"
           content="Library project developed for The Odin Project's Full Stack JavaScript Course"
         />
       </Head>
       {/* the following will be part of main */}
-      <div>
+      <div className={Styles.mainTop}>
         <MainTop />
       </div>
-      <div>
-        <div>
+      {/* source and info */}
+      <div className={Styles.sourceNinfo}>
+        {/* the following two div will be replace by Link from NextJS */}
+        <div className={Styles.info}>
           <BiInfoCircle />
         </div>
-        <div>
+        <div className={Styles.code}>
           <BiCodeAlt />
         </div>
       </div>
-      <div>
+      {/* books list */}
+      <div className={Styles.books}>
         <Books />
       </div>
     </div>

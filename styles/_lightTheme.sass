@@ -1,5 +1,7 @@
 // ------------------------ variables ------------------------- //
 // breakpoints
+$vv_small: 300px
+
 // text, icon color
 $primary_color: #313131
 $secondary_color: #6d6d6d
@@ -8,7 +10,7 @@ $tertiary_color: #9e9e9e
 // background color
 $bg_color_primary: #fff
 $bg_color_secondary: #000
-$bg_color_form_input: #f4f4f4
+$bg_color_box: #f4f4f4
 
 // border
 $border_color_primary: #e4e4e4
@@ -16,6 +18,7 @@ $border_color_primary: #e4e4e4
 // zindex
 $zindex_nav: 100
 $zindex_fab: 101
+$zindex_source: 102
 
 // ------------------------ mixins ------------------------- //
 // mixins for text
@@ -36,6 +39,7 @@ $zindex_fab: 101
     font-size: 12px
     line-height: 15px
     letter-spacing: .3px
+    color: $textColor
 
 @mixin subNormalText($textColor: $primary_color)
     font-size: 10px

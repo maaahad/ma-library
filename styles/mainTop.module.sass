@@ -1,0 +1,63 @@
+@use "lightTheme"
+
+.container
+    display: flex
+    flex-flow: column wrap
+    align-items: stretch
+    justify-content: space-between
+    & > * + *
+        margin-block-start: 20px
+
+    .interaction
+        display: flex
+        flex-flow: row nowrap
+        align-items: center
+        justify-content: space-between
+
+        & > * + *
+            margin-inline-start: 20px
+    .clearStore, .addBook
+        display: flex
+        flex-flow: row nowrap
+        align-items: center
+        justify-content: center
+        width: 120px
+        height: 30px
+        border-radius: 15px
+        cursor: pointer
+        background-color: lightTheme.$bg_color_primary
+        transition: all .3s
+        border: 1px solid lightTheme.$primary_color
+        align-self: center
+        box-shadow: 0 8px 8px 0 rgba(lightTheme.$bg_color_secondary, 0.1)
+
+        & > * + *
+            margin-inline-start: 5px
+
+        & > span
+            @include lightTheme.subtitleText($textColor:lightTheme.$primary_color )
+
+        & > svg
+            width: 16px
+            height: 16px
+            color: lightTheme.$primary_color
+            transition: all .3s
+
+        &:hover
+            background-color: lightTheme.$bg_color_secondary
+            box-shadow: 0px 10px 10px 0 rgba(lightTheme.$bg_color_secondary, 0.4)
+            & > svg, & > span
+                color: #fff
+
+    .summary
+        background-color: lightTheme.$bg_color_primary
+        border: 1px solid lightTheme.$primary_color
+        border-radius: 5px
+        padding: 10px
+        & > p
+            margin: 0
+            padding: 0
+            @include lightTheme.normalText($textColor: lightTheme.$primary_color)
+            text-align: center
+        & > p + p
+            margin-block-start: 5px
