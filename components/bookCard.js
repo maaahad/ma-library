@@ -11,6 +11,9 @@ import {
   BiTrash,
 } from "react-icons/bi";
 
+// components
+import ToggleSwitch from "./utilities/toggleswitch";
+
 // sass styles
 import Styles from "../styles/bookCard.module.sass";
 
@@ -26,10 +29,8 @@ function CardHeader({ book }) {
         <h6>Pages : {book.pages}</h6>
       </div>
       <div className={Styles.cardEdit}>
-        {/* the following mught be handled with checkbox,  */}
-        {/* So that we can target checked state to style in CSS */}
-        <div className={Styles.status}>
-          {/* read book : green color, unread-book: red color */}
+        <ToggleSwitch />
+        {/* <div className={Styles.status}>
           <input
             type="checkbox"
             checked={checked}
@@ -43,7 +44,7 @@ function CardHeader({ book }) {
           >
             <BiBookReader />
           </label>
-        </div>
+        </div> */}
         <div className={Styles.edit}>
           <BiEdit />
         </div>
@@ -80,6 +81,7 @@ function CardActions({ book }) {
 export default function BookCard({ book }) {
   return (
     <div className={Styles.bookContainer}>
+      {/* <ToggleSwitch /> */}
       <CardHeader book={book} />
       <div className={Styles.cardMedia}>
         <Image src="/nocoverb.png" layout="fill" objectFit="fill" />
