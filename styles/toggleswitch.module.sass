@@ -18,6 +18,7 @@
         justify-content: space-between
         border-radius: 20px
         background-color: lightTheme.$bg_color_box
+        background-color: rgba(lightTheme.$bg_color_secondary, .8)
         padding: 5px 10px
         cursor: pointer
 
@@ -33,40 +34,41 @@
             position: absolute
             top: 0
             transition: all .3s
+            color: white
+            z-index: lightTheme.$zindex_toggle_text
 
         .checkedItem
             justify-content: flex-start
             left: 0
             padding-inline-start: 10px
-            color: white
 
         .notCheckedItem
             justify-content: flex-end
             right: 0
             padding-inline-end: 10px
-            color: lightTheme.$tertiary_color
 
         .toggle
             height: 100%
             width: 50%
             position: absolute
             top: 0
-            left: 0
-            background-color: #48e98a
+            left: 50%
+            background-color: #fe4551
             // box-shadow: 0 20px 20px 0 rgba(#48e98a, 0.3)
-            // border: 1px solid red
             border-radius: 20px
             transition: all .3s
+            z-index: lightTheme.$zindex_toggle_slider
 
         & > p + p
             margin-inline-start: 5px
 
     input:checked
         & + .toggleWrapper > .toggle
-            left: 50%
-            background-color: #fe4551
-        & + .toggleWrapper > .checkedItem
-            color: lightTheme.$tertiary_color
+            left: 0
+            background-color: #48e98a
 
-        & + .toggleWrapper > .notCheckedItem
-            color: white
+        // & + .toggleWrapper > .checkedItem
+        //     color: lightTheme.$tertiary_color
+
+        // & + .toggleWrapper > .notCheckedItem
+        //     color: white

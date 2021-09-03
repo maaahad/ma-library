@@ -4,6 +4,9 @@
 // react-icons
 import { BiTrash, BiBookAdd } from "react-icons/bi";
 
+// library
+import { useLibrary } from "./libraryProvider";
+
 // sass styles
 import Styles from "../styles/mainTop.module.sass";
 
@@ -11,6 +14,7 @@ import Styles from "../styles/mainTop.module.sass";
 import clsx from "clsx";
 
 export default function MainTop() {
+  const { clearLibrary } = useLibrary();
   return (
     <div className={Styles.container}>
       <div className={Styles.summary}>
@@ -19,14 +23,18 @@ export default function MainTop() {
         <p>Number of Books to be read : 960</p>
       </div>
       <div className={Styles.interaction}>
-        <div className={Styles.clearStore} title="Clear Store">
+        <button
+          className={Styles.clearStore}
+          title="Clear Store"
+          onClick={clearLibrary}
+        >
           <BiTrash />
           <span>Clear Store</span>
-        </div>
-        <div className={Styles.addBook} title="Add Book">
+        </button>
+        <button className={Styles.addBook} title="Add Book">
           <BiBookAdd />
           <span>Add Book</span>
-        </div>
+        </button>
       </div>
     </div>
   );

@@ -18,8 +18,8 @@ export default function Books() {
         <FilterNSort />
       </div>
       <div className={Styles.books}>
-        {library.map((book, index) => (
-          <BookCard key={index} book={book} />
+        {library.map((book, i) => (
+          <BookCard key={i} book={book} />
         ))}
       </div>
     </div>

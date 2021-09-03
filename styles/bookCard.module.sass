@@ -89,7 +89,7 @@
         justify-content: flex-start
 
         & > * + *
-            margin-inline-start: 15px
+            margin-inline-start: 20px
 
     .likes, .comments
         display: flex
@@ -98,10 +98,11 @@
         justify-content: space-between
 
         & > * + *
-            margin-inline-start: 2px
+            margin-inline-start: 4px
 
-        & > div
+        & > button
             @include lightTheme.flexCenter
+            padding: 0
             height: 20px
             width: 20px
             border-radius: 50%
@@ -121,7 +122,17 @@
             color: lightTheme.$primary_color
 
         & > span
-            color: lightTheme.$primary_color
+            display: inline-block
+            min-width: 30px
+            color: lightTheme.$secondary_color
+
+    // .likes
+    //     & > span
+    //         color: lightTheme.$secondary_color
+
+    // .comments
+    //     & > span
+    //         color: lightTheme.$secondary_color
 
     .removeMe
         display: flex
