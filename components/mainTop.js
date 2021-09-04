@@ -1,20 +1,49 @@
 // react
+import React, { useState, useReducer } from "react";
 // next
 
 // react-icons
 import { BiTrash, BiBookAdd } from "react-icons/bi";
 
-// library
+// libs
 import { useLibrary } from "./libraryProvider";
 
 // sass styles
 import Styles from "../styles/mainTop.module.sass";
 
-// clsx
-import clsx from "clsx";
-
 export default function MainTop() {
-  const { clearLibrary } = useLibrary();
+  const { library, clearLibrary, addBookToLibrary } = useLibrary();
+
+  // trying modal
+  const [displayAddBook, toggleDisplayAddBook] = useReducer(
+    (displayAddBook) => !displayAddBook,
+    false
+  );
+
+  const disableWindowScroll = () => {
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const scrollLeft =
+      window.pageXOffset || document.documentElement.scrollLeft;
+
+    // window.scrollTo({
+    //   left: 0,
+    //   top: 0,
+    //   behavior: "smooth",
+    // });
+  };
+  const enableWindowScroll = () => {};
+
+  const displayAddBookModal = () => {
+    toggleDisplayAddBook();
+    window.onscroll = disableWindowScroll;
+  };
+
+  const hideAddBookModal = () => {
+    // window.removeEventListener("scroll", disableWindowScroll);
+    window.onscroll = enableWindowScroll;
+    toggleDisplayAddBook();
+  };
+
   return (
     <div className={Styles.container}>
       <div className={Styles.summary}>
@@ -31,11 +60,22 @@ export default function MainTop() {
           <BiTrash />
           <span>Clear Store</span>
         </button>
-        <button className={Styles.addBook} title="Add Book">
+        <button
+          className={Styles.addBook}
+          title="Add Book"
+          onClick={displayAddBookModal}
+        >
           <BiBookAdd />
           <span>Add Book</span>
         </button>
       </div>
+
+      {/* add book modal */}
+      {displayAddBook && (
+        <div className={Styles.addBookModal} onClick={hideAddBookModal}>
+          <div></div>
+        </div>
+      )}
     </div>
   );
 }

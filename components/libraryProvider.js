@@ -47,9 +47,9 @@ export default function LibraryProvider({ children }) {
     setLibrary([]);
   };
 
-  const addBookToLibrary = ({ title, author, pages }) => {
-    const newBook = new Book(title, author, pages);
-    // need to optimize this
+  const addBookToLibrary = ({ title, author, pages, readStatus }) => {
+    const newBook = new Book(title, author, pages, readStatus);
+    // TODO: need to optimize this
     const newLibrary = [...library, newBook];
     setLibrary(newLibrary);
   };

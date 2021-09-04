@@ -64,11 +64,24 @@
 
     .edit
         @include lightTheme.flexCenter
-        width: 20px
+        width: 130px
         height: 20px
-        border-radius: 50%
+        border: none
+        border-radius: 10px
+        padding: 0 10px
         cursor: pointer
         background-color: lightTheme.$bg_color_secondary
+        display: flex
+        flex-flow: row nowrap
+        align-items: center
+        justify-content: space-between
+
+        & > * + *
+            margin-inline-start: 10px
+
+        & > span
+            @include lightTheme.subsubNormalText($textColor: white)
+            text-transform: uppercase
 
         & svg
             width: 14px

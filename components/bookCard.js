@@ -40,9 +40,10 @@ function CardHeader({ book }) {
           uncheckedText="Not Read"
           toggleStatus={toggleStatus}
         />
-        <div className={Styles.edit}>
+        <button className={Styles.edit}>
+          <span>Edit This Book</span>
           <BiEdit />
-        </div>
+        </button>
       </div>
     </div>
   );
