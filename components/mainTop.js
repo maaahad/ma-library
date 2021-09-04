@@ -11,6 +11,14 @@ import { useLibrary } from "./libraryProvider";
 // sass styles
 import Styles from "../styles/mainTop.module.sass";
 
+// components
+// import BookForm from "./bookForm";
+import dynamic from "next/dynamic";
+
+const BookForm = dynamic(import("./bookForm"), {
+  ssr: false,
+});
+
 export default function MainTop() {
   const { library, clearLibrary, addBookToLibrary } = useLibrary();
 
@@ -44,9 +52,15 @@ export default function MainTop() {
     toggleDisplayAddBook();
   };
 
+  const handleAddBookToLibrary = ({ title, author, pages, readStatus }) => {
+    hideAddBookModal();
+    addBookToLibrary({ title, author, pages, readStatus });
+  };
+
   return (
     <div className={Styles.container}>
       <div className={Styles.summary}>
+        {/* TODO: we need to add a meter form input here to show read books signal */}
         <p>Total Books : 1000</p>
         <p>Number of Books read : 40</p>
         <p>Number of Books to be read : 960</p>
@@ -72,8 +86,11 @@ export default function MainTop() {
 
       {/* add book modal */}
       {displayAddBook && (
-        <div className={Styles.addBookModal} onClick={hideAddBookModal}>
-          <div></div>
+        <div className={Styles.addBookModal}>
+          <BookForm
+            handleAddBookToLibrary={handleAddBookToLibrary}
+            hideAddBookModal={hideAddBookModal}
+          />
         </div>
       )}
     </div>
