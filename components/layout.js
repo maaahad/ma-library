@@ -1,12 +1,16 @@
 // react
 // next
+import dynamic from "next/dynamic";
 
 // react icons
 import { BiCopyright } from "react-icons/bi";
 
 // components
 import Nav from "./nav";
-import LibraryProvider from "./libraryProvider";
+// import LibraryProvider from "./libraryProvider";
+const LibraryProvider = dynamic(() => import("./libraryProvider"), {
+  ssr: false,
+});
 
 // sass
 import Styles from "../styles/layout.module.sass";
