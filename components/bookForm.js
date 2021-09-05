@@ -38,7 +38,7 @@ export default function BookForm({
     event.preventDefault();
     const form = event.target;
     handleAddBookToLibrary({
-      title: form.elements.title.name,
+      title: form.elements.title.value,
       author: form.elements.author.value,
       pages: form.elements.pages.value,
       readStatus: form.elements.readStatus.checked,
