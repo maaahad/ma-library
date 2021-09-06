@@ -3,10 +3,11 @@ import React, { useReducer } from "react";
 // nextjs
 
 // react-icons
-import { BiXCircle, BiBookAdd, BiReset } from "react-icons/bi";
+import { BiXCircle, BiX, BiBookAdd, BiReset } from "react-icons/bi";
 // sass styles
 import Styles from "../styles/bookForm.module.sass";
 // components
+import ToggleSwitch from "./utilities/toggleswitch";
 
 // NOTE: we may need different ID prefix for different form use
 export default function BookForm({
@@ -41,8 +42,13 @@ export default function BookForm({
       title: form.elements.title.value,
       author: form.elements.author.value,
       pages: form.elements.pages.value,
-      readStatus: form.elements.readStatus.checked,
+      readStatus: inputsState.readStatus,
+      //   readStatus: form.elements.readStatus.checked,
     });
+  };
+
+  const toggleReadStatus = () => {
+    setInputsState({ readStatus: !inputsState.readStatus });
   };
 
   const resetInputs = () => {
@@ -50,74 +56,86 @@ export default function BookForm({
   };
 
   return (
-    <div>
-      <div>
-        <div>Add Book to Library</div>
+    <div className={Styles.bookForm}>
+      <div className={Styles.bookFormHeader}>
+        <h6>Add Book to Library</h6>
         <button type="button" onClick={leaveBookForm}>
-          <BiXCircle />
+          <BiX />
         </button>
       </div>
-      <form onSubmit={handleFormSubmit}>
-        <fieldset>
-          <legend>Book Details</legend>
-          <div className={Styles.bookTitle}>
+      <div className={Styles.bookDetailsTitle}>
+        <div></div>
+        <h6>Book Details</h6>
+      </div>
+      <form onSubmit={handleFormSubmit} className={Styles.bookFormInputs}>
+        <div className={Styles.textInputWrapper}>
+          <input
+            id="book-title"
+            type="text"
+            name="title"
+            placeholder="Title"
+            value={inputsState.title}
+            onChange={handleInputChange}
+            required
+            className={Styles.input}
+          />
+          <label htmlFor="book-title">Title</label>
+        </div>
+        <div className={Styles.textInputWrapper}>
+          <input
+            type="text"
+            name="author"
+            placeholder="Author"
+            value={inputsState.author}
+            onChange={handleInputChange}
+            required
+            id="author"
+          />
+          <label htmlFor="author">Author</label>
+        </div>
+        <div className={Styles.pagesNreadStatus}>
+          <div className={Styles.numberInputWrapper}>
             <input
-              id="book-title"
-              type="text"
-              name="title"
-              placeholder="Enter Book title"
-              value={inputsState.title}
+              type="number"
+              name="pages"
+              value={inputsState.pages}
               onChange={handleInputChange}
-              required
-              className={Styles.input}
+              id="pages"
             />
-            <label htmlFor="book-title">Title</label>
+            <label htmlFor="pages">Pages</label>
           </div>
-          <div>
-            <label htmlFor="author">Author/s</label>
-            <input
-              type="text"
-              name="author"
-              placeholder="Enter Book's Author name"
-              value={inputsState.author}
+          <div className={Styles.checkboxInputWrapper}>
+            <ToggleSwitch
+              checked={inputsState.readStatus}
+              id="bookForm"
+              checkedText="Read"
+              uncheckedText="Not Read"
+              toggleStatus={toggleReadStatus}
+            />
+            {/* <input
+              id="readStatus"
+              type="checkbox"
+              name="readStatus"
+              checked={inputsState.readStatus}
               onChange={handleInputChange}
-              required
-              id="author"
             />
+            <label htmlFor="readStatus">Already Read</label> */}
           </div>
-          <div>
-            <div>
-              <label htmlFor="pages">Pages</label>
-              <input
-                type="number"
-                name="pages"
-                value={inputsState.pages}
-                onChange={handleInputChange}
-                id="pages"
-              />
-            </div>
-            <div>
-              <label htmlFor="readStatus">Already Read</label>
-              <input
-                id="readStatus"
-                type="checkbox"
-                name="readStatus"
-                checked={inputsState.readStatus}
-                onChange={handleInputChange}
-              />
-            </div>
-          </div>
-        </fieldset>
+        </div>
 
         {/* submit and reset buttons */}
-        <div>
-          <button type="button" onClick={resetInputs}>
+        <div className={Styles.buttonsGroup}>
+          <button
+            type="button"
+            onClick={resetInputs}
+            className={Styles.formButton}
+          >
             <BiReset />
             <span>Reset</span>
           </button>
-          <button type="submit">
-            <BiBookAdd />
+          <button type="submit" className={Styles.formButton}>
             <span>Add to Library</span>
+            <BiBookAdd />
           </button>
         </div>
       </form>

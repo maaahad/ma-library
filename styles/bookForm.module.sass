@@ -1,35 +1,209 @@
 @use "lightTheme"
 
-.bookTitle
-    // test 
-    margin-top: 20px
-    position: relative
+.bookForm
+    // need media contiditon for setting up width 
     width: 100%
-    height: 40px
-    background-color: lightTheme.$bg_color_box
-    border: 1px solid lightTheme.$border_color_primary
-    border-radius: 5px
+    height: auto
+    margin: auto
+    background-color: white
+    padding: 30px
+    // border: 1px solid #fe4551
 
-    label
-        height: 30px
-        background-color: transparent
-        padding: 5px 10px
-        opacity: 0
-        position: absolute
-        left: 10px
-        bottom: 0
+    & > * + *
+        margin-block-start: 15px
+
+.bookFormHeader
+    display: flex
+    flex-flow: row nowrap
+    align-items: center
+    justify-content: space-between
+
+    & > * + *
+        margin-inline-start: 10px
+
+    & > h6
+        padding: 0
+        margin: 0
+        @include lightTheme.subtitleText($textColor: lightTheme.$primary_color)
+        text-transform: uppercase
+
+    & > button
+        width: 20px
+        height: 20px
+        padding: 2px
+        border-radius: 15px
+        background-color: #fe4551
+        border: 1px solid #fe4551
+        @include lightTheme.flexCenter
+        cursor: pointer
         transition: all .3s ease-in
-        // transition: opacity .3s linear
-        // transition: bottom .3s linear
 
-    input
+        & > svg
+            width: 16px
+            height: 16px
+            color: white
+            transition: all .3s ease-in
+
+    // add box-shadow on hover
+    & > button:hover
+        box-shadow: #fe4551 0px 4px 14px 0px
+    //     background-color: #fe4551
+    //     & > svg
+    //         color: white
+
+.bookDetailsTitle
+    display: flex
+    flex-flow: row nowrap
+    align-items: center
+    justify-content: flex-start
+    border-bottom: 2px solid #48e98a
+
+    & > div
+        width: 20px
+        height: 20px
+        background-color: #48e98a
+    & > h6
+        margin: 0
+        padding: 0
+        margin-inline-start: 5px
+        @include lightTheme.subtitleText($textColor: lightTheme.$primary_color)
+        text-transform: uppercase
+
+.bookFormInputs
+    & > *
+        margin-block-start: 30px
+
+    .textInputWrapper, .numberInputWrapper
+        position: relative
         width: 100%
-        height: 100%
-        outline: none
-        border-width: 0
+        height: 30px
 
-    input:focus, input:valid
-        & + label
-            bottom: 25px
-            opacity: 1
-            background-color: white
+        & > label
+            @include lightTheme.subtitleText($textColor: lightTheme.$primary_color)
+            height: 20px
+            padding: 4px 0
+            position: absolute
+            left: 0
+            bottom: 0
+            opacity: 0
+            transition: all .3s ease-in
+            text-transform: capitalize
+
+        & > input
+            @include lightTheme.normalText($textColor: lightTheme.$primary_color)
+            outline: none
+            border-width: 0
+            width: 100%
+            height: 100%
+            padding: 5px 10px
+            background-color: lightTheme.$bg_color_box
+
+        // & > input:focus, 
+        & > input:valid
+            background-color: lightTheme.$bg_color_box
+
+            & + label
+                opacity: 1
+                bottom: 100%
+
+    .numberInputWrapper
+        width: 40%
+        & > input
+            padding-inline-end: 0
+
+    .checkboxInputWrapper
+        width: 40%
+        display: flex
+        flex-flow: row nowrap
+        justify-content: flex-end
+        // & > label
+        //     @include lightTheme.normalText($textColor: lightTheme.$primary_color)
+        //     height: 20px
+        //     padding: 4px 0
+        //     text-transform: capitalize
+        //     margin-inline-start: 2px
+
+    .pagesNreadStatus
+        display: flex
+        flex-flow: row nowrap
+        align-items: center
+        justify-content: space-between
+
+    .buttonsGroup
+        display: flex
+        flex-flow: row nowrap
+        align-items: center
+        justify-content: space-between
+        margin-block-start: 40px
+
+        .formButton
+            @include lightTheme.flexCenter
+            border: none
+            height: 28px
+            width: 150px
+            border-radius: 14px
+            padding: 5px 5px
+            cursor: pointer
+
+            & > * + *
+                margin-inline-start: 5px
+
+            & > span
+                display: inline-block
+                @include lightTheme.normalText($textColor: white)
+                text-transform: uppercase
+
+            & > svg
+                width: 16px
+                height: 16px
+                color: white
+
+            &:nth-child(1)
+                background-color: #fe4551
+
+            &:nth-child(2)
+                background-color: #48e98a
+
+        .formButton:hover
+            &:nth-child(1)
+                box-shadow: #fe4551 0px 4px 14px 0px
+
+            &:nth-child(2)
+                box-shadow: #48e98a 0px 4px 14px 0px
+
+@media screen and (min-width: 520px)
+    .bookForm
+        width: 520px
+
+// .textInputWrapper
+
+//     position: relative
+//     width: 100%
+//     height: 40px
+//     border: 1px solid lightTheme.$border_color_primary
+
+//     label
+//         height: 30px
+//         background-color: transparent
+//         padding: 5px 10px
+//         opacity: 0
+//         position: absolute
+//         left: 10px
+//         bottom: 0
+//         transition: all .3s ease-in
+//         // transition: opacity .3s linear
+//         // transition: bottom .3s linear
+
+//     input
+//         width: 100%
+//         height: 100%
+//         outline: none
+//         border-width: 0
+//         background-color: lightTheme.$bg_color_box
+
+//     input:focus, input:valid
+
+//         & + label
+//             bottom: 25px
+//             opacity: 1
+//             background-color: white
