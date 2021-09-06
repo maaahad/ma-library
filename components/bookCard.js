@@ -13,6 +13,7 @@ import {
 
 // components
 import ToggleSwitch from "./utilities/toggleswitch";
+import BookForm from "./bookForm";
 
 // library
 import { useLibrary } from "./libraryProvider";
@@ -21,10 +22,28 @@ import { useLibrary } from "./libraryProvider";
 import Styles from "../styles/bookCard.module.sass";
 
 function CardHeader({ book }) {
-  const { toggleBookReadStatus } = useLibrary();
+  const { toggleBookReadStatus, editBookToLibrary } = useLibrary();
+  const [displayEditBook, toggleDisplayEditBook] = useReducer(
+    (displayEditBook) => !displayEditBook,
+    false
+  );
   const toggleStatus = () => {
     toggleBookReadStatus(book.id);
   };
+
+  const displayEditBookModal = () => {
+    toggleDisplayEditBook();
+  };
+  const hideEditBookModal = () => {
+    toggleDisplayEditBook();
+  };
+
+  const onBookFormSubmit = ({ title, author, pages, readStatus }) => {
+    hideEditBookModal();
+    // TODO: dno't do anything in case book has not been changed
+    editBookToLibrary({ ...book, title, author, pages, readStatus });
+  };
+
   return (
     <div className={Styles.cardHeader}>
       <div className={Styles.cardMeta}>
@@ -40,11 +59,28 @@ function CardHeader({ book }) {
           uncheckedText="Not Read"
           toggleStatus={toggleStatus}
         />
-        <button className={Styles.edit}>
+        <button
+          type="button"
+          className={Styles.edit}
+          onClick={displayEditBookModal}
+        >
           <span>Edit This Book</span>
           <BiEdit />
         </button>
       </div>
+
+      {/* add book modal */}
+      {displayEditBook && (
+        <div className={Styles.editBookModal}>
+          <BookForm
+            formHeader="Edit Book to Library"
+            submitText="Edit"
+            onBookFormSubmit={onBookFormSubmit}
+            hideAddBookModal={hideEditBookModal}
+            bookState={{ ...book }}
+          />
+        </div>
+      )}
     </div>
   );
 }
@@ -76,8 +112,8 @@ function CardActions({ book }) {
         </div>
       </div>
       <button className={Styles.removeMe} onClick={removeBook}>
+        <span>Delete this book</span>
         <BiTrash />
-        <span>Remove Me</span>
       </button>
     </div>
   );

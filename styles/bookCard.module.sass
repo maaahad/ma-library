@@ -64,7 +64,7 @@
 
     .edit
         @include lightTheme.flexCenter
-        width: 130px
+        width: 120px
         height: 20px
         border: none
         border-radius: 10px
@@ -88,6 +88,19 @@
             height: 14px
             color: white
 
+    .editBookModal
+        position: fixed
+        top: 0
+        left: 0
+        bottom: 0
+        right: 0
+        margin: 0
+        width: 100%
+        height: 100vh
+        background-color: lightTheme.$bg_color_modal
+        z-index: lightTheme.$zindex_modal
+        padding: 40px
+        @include lightTheme.flexCenter
 .cardActions
     padding: 10px 15px
     display: flex

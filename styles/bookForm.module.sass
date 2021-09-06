@@ -87,7 +87,7 @@
             bottom: 0
             opacity: 0
             transition: all .3s ease-in
-            text-transform: capitalize
+            text-transform: uppercase
 
         & > input
             @include lightTheme.normalText($textColor: lightTheme.$primary_color)
@@ -104,15 +104,15 @@
 
             & + label
                 opacity: 1
-                bottom: 100%
+                bottom: calc(100% + 5px)
 
     .numberInputWrapper
-        width: 40%
+        width: 120px
         & > input
             padding-inline-end: 0
 
     .checkboxInputWrapper
-        width: 40%
+        width: 120px
         display: flex
         flex-flow: row nowrap
         justify-content: flex-end
@@ -140,7 +140,7 @@
             @include lightTheme.flexCenter
             border: none
             height: 28px
-            width: 150px
+            width: 120px
             border-radius: 14px
             padding: 5px 5px
             cursor: pointer

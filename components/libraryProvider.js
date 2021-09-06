@@ -38,11 +38,13 @@ Book.prototype = {
   incrementLikes() {
     this.likes++;
   },
+  edit({ title, author, pages, readStatus, likes, comments, id }) {
+    return new Book(title, author, pages, readStatus, likes, comments, id);
+  },
 };
 
 // get the library from localstorage
 const getLibraryFromLocalStorage = () => {
-  console.log("getLibraryFromLocalStorage");
   const library = JSON.parse(window.localStorage.getItem("maLibrary"));
   if (!library) return [];
   return library.map(
@@ -60,22 +62,20 @@ const getLibraryFromLocalStorage = () => {
 };
 
 export default function LibraryProvider({ children }) {
-  // const [library, setLibrary] = useState([
-  //   new Book("JS the Definitive Guide", "David Flanagan", 687, true),
-  //   new Book("Web Development with Node & Express", "Ethan Brown", 322, true),
-  // ]);
   const [library, setLibrary] = useState(getLibraryFromLocalStorage());
 
   const clearLibrary = () => {
+    // NOTE : repeated code
+    window.localStorage.setItem("maLibrary", null);
     setLibrary([]);
   };
 
   const addBookToLibrary = ({ title, author, pages, readStatus }) => {
-    console.log("addBookToLibrary", title);
     const newBook = new Book(title, author, pages, readStatus);
     // TODO: need to optimize this
     const newLibrary = [...library, newBook];
     // we update the localStorage
+    // NOTE : repeated code
     window.localStorage.setItem("maLibrary", JSON.stringify(newLibrary));
     // we update the state to re-render the component
     setLibrary(newLibrary);
@@ -83,6 +83,22 @@ export default function LibraryProvider({ children }) {
 
   const removeBookFromLibrary = (id) => {
     const newLibrary = library.filter((book) => book.id !== id);
+    // we update the localStorage
+    // NOTE : repeated code
+    window.localStorage.setItem("maLibrary", JSON.stringify(newLibrary));
+    // we update the state to re-render the component
+    setLibrary(newLibrary);
+  };
+
+  const editBookToLibrary = (newBook) => {
+    const newLibrary = library.map((book) =>
+      book.id === newBook.id ? book.edit(newBook) : book
+    );
+
+    // NOTE : repeated code
+    // we update the localStorage
+    window.localStorage.setItem("maLibrary", JSON.stringify(newLibrary));
+    // we update the state to re-render the component
     setLibrary(newLibrary);
   };
 
@@ -91,6 +107,8 @@ export default function LibraryProvider({ children }) {
       book.id === id && book.toggleReadStatus();
       return book;
     });
+    // NOTE : repeated code
+    window.localStorage.setItem("maLibrary", JSON.stringify(newLibrary));
     setLibrary(newLibrary);
   };
 
@@ -99,6 +117,8 @@ export default function LibraryProvider({ children }) {
       book.id === id && book.incrementLikes();
       return book;
     });
+    // NOTE : repeated code
+    window.localStorage.setItem("maLibrary", JSON.stringify(newLibrary));
     setLibrary(newLibrary);
   };
 
@@ -120,6 +140,7 @@ export default function LibraryProvider({ children }) {
         addBookToLibrary,
         clearLibrary,
         removeBookFromLibrary,
+        editBookToLibrary,
         toggleBookReadStatus,
         updateBookLikes,
       }}

@@ -12,12 +12,7 @@ import { useLibrary } from "./libraryProvider";
 import Styles from "../styles/mainTop.module.sass";
 
 // components
-// import BookForm from "./bookForm";
-import dynamic from "next/dynamic";
-
-const BookForm = dynamic(import("./bookForm"), {
-  ssr: false,
-});
+import BookForm from "./bookForm";
 
 export default function MainTop() {
   const { library, clearLibrary, addBookToLibrary } = useLibrary();
@@ -52,7 +47,7 @@ export default function MainTop() {
     toggleDisplayAddBook();
   };
 
-  const handleAddBookToLibrary = ({ title, author, pages, readStatus }) => {
+  const onBookFormSubmit = ({ title, author, pages, readStatus }) => {
     hideAddBookModal();
     addBookToLibrary({ title, author, pages, readStatus });
   };
@@ -61,9 +56,9 @@ export default function MainTop() {
     <div className={Styles.container}>
       <div className={Styles.summary}>
         {/* TODO: we need to add a meter form input here to show read books signal */}
-        <p>Total Books : 1000</p>
-        <p>Number of Books read : 40</p>
-        <p>Number of Books to be read : 960</p>
+        <p>Total Books : {library.length}</p>
+        <p>Number of Books read (TODO : use library): 40</p>
+        <p>Number of Books to be read (TODO : use library): 960</p>
       </div>
       <div className={Styles.interaction}>
         <button
@@ -88,7 +83,7 @@ export default function MainTop() {
       {displayAddBook && (
         <div className={Styles.addBookModal}>
           <BookForm
-            handleAddBookToLibrary={handleAddBookToLibrary}
+            onBookFormSubmit={onBookFormSubmit}
             hideAddBookModal={hideAddBookModal}
           />
         </div>

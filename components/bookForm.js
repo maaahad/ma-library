@@ -3,7 +3,7 @@ import React, { useReducer } from "react";
 // nextjs
 
 // react-icons
-import { BiXCircle, BiX, BiBookAdd, BiReset } from "react-icons/bi";
+import { BiXCircle, BiX, BiBookAdd, BiReset, BiEdit } from "react-icons/bi";
 // sass styles
 import Styles from "../styles/bookForm.module.sass";
 // components
@@ -11,18 +11,21 @@ import ToggleSwitch from "./utilities/toggleswitch";
 
 // NOTE: we may need different ID prefix for different form use
 export default function BookForm({
-  handleAddBookToLibrary = (f) => f,
+  formHeader = "Add Book to Library",
+  submitText = "Add",
+  onBookFormSubmit = (f) => f,
   hideAddBookModal = (f) => f,
-}) {
-  // We will create a custom hook for each input
-  // and then a custom hook for overall form
-  const inputsReducer = (oldState, newState) => ({ ...oldState, ...newState });
-  const [inputsState, setInputsState] = useReducer(inputsReducer, {
+  bookState = {
     title: "",
     author: "",
     pages: 1,
     readStatus: false,
-  });
+  },
+}) {
+  // We will create a custom hook for each input
+  // and then a custom hook for overall form
+  const inputsReducer = (oldState, newState) => ({ ...oldState, ...newState });
+  const [inputsState, setInputsState] = useReducer(inputsReducer, bookState);
 
   const leaveBookForm = () => {
     hideAddBookModal();
@@ -35,10 +38,10 @@ export default function BookForm({
     setInputsState({ [name]: value });
   };
 
-  const handleFormSubmit = (event) => {
+  const onFormSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
-    handleAddBookToLibrary({
+    onBookFormSubmit({
       title: form.elements.title.value,
       author: form.elements.author.value,
       pages: form.elements.pages.value,
@@ -58,7 +61,7 @@ export default function BookForm({
   return (
     <div className={Styles.bookForm}>
       <div className={Styles.bookFormHeader}>
-        <h6>Add Book to Library</h6>
+        <h6>{formHeader}</h6>
         <button type="button" onClick={leaveBookForm}>
           <BiX />
         </button>
@@ -67,7 +70,7 @@ export default function BookForm({
         <div></div>
         <h6>Book Details</h6>
       </div>
-      <form onSubmit={handleFormSubmit} className={Styles.bookFormInputs}>
+      <form onSubmit={onFormSubmit} className={Styles.bookFormInputs}>
         <div className={Styles.textInputWrapper}>
           <input
             id="book-title"
@@ -134,8 +137,8 @@ export default function BookForm({
             <span>Reset</span>
           </button>
           <button type="submit" className={Styles.formButton}>
-            <span>Add to Library</span>
-            <BiBookAdd />
+            <span>{submitText}</span>
+            {submitText === "Add" ? <BiBookAdd /> : <BiEdit />}
           </button>
         </div>
       </form>
