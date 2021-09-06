@@ -5,7 +5,7 @@ import React, { useReducer } from "react";
 // react-icons
 import { BiXCircle, BiBookAdd, BiReset } from "react-icons/bi";
 // sass styles
-
+import Styles from "../styles/bookForm.module.sass";
 // components
 
 // NOTE: we may need different ID prefix for different form use
@@ -60,8 +60,7 @@ export default function BookForm({
       <form onSubmit={handleFormSubmit}>
         <fieldset>
           <legend>Book Details</legend>
-          <div>
-            <label htmlFor="book-title">Title</label>
+          <div className={Styles.bookTitle}>
             <input
               id="book-title"
               type="text"
@@ -70,7 +69,9 @@ export default function BookForm({
               value={inputsState.title}
               onChange={handleInputChange}
               required
+              className={Styles.input}
             />
+            <label htmlFor="book-title">Title</label>
           </div>
           <div>
             <label htmlFor="author">Author/s</label>
