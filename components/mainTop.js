@@ -14,41 +14,15 @@ import Styles from "../styles/mainTop.module.sass";
 // components
 import BookForm from "./bookForm";
 
+// in-house hooks
+import { useModal } from "../lib/hooks";
+
 export default function MainTop() {
   const { library, clearLibrary, addBookToLibrary } = useLibrary();
-
-  // trying modal
-  const [displayAddBook, toggleDisplayAddBook] = useReducer(
-    (displayAddBook) => !displayAddBook,
-    false
-  );
-
-  const disableWindowScroll = () => {
-    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-    const scrollLeft =
-      window.pageXOffset || document.documentElement.scrollLeft;
-
-    // window.scrollTo({
-    //   left: 0,
-    //   top: 0,
-    //   behavior: "smooth",
-    // });
-  };
-  const enableWindowScroll = () => {};
-
-  const displayAddBookModal = () => {
-    toggleDisplayAddBook();
-    window.onscroll = disableWindowScroll;
-  };
-
-  const hideAddBookModal = () => {
-    // window.removeEventListener("scroll", disableWindowScroll);
-    window.onscroll = enableWindowScroll;
-    toggleDisplayAddBook();
-  };
+  const [renderForm, renderModal, hideModal] = useModal();
 
   const onBookFormSubmit = ({ title, author, pages, readStatus }) => {
-    hideAddBookModal();
+    hideModal();
     addBookToLibrary({ title, author, pages, readStatus });
   };
 
@@ -69,10 +43,11 @@ export default function MainTop() {
           <BiTrash />
           <span>Clear Store</span>
         </button>
+        {/* add display option Grid or Table using toggleSwitch */}
         <button
           className={Styles.addBook}
           title="Add Book"
-          onClick={displayAddBookModal}
+          onClick={renderModal}
         >
           <BiBookAdd />
           <span>Add Book</span>
@@ -80,11 +55,13 @@ export default function MainTop() {
       </div>
 
       {/* add book modal */}
-      {displayAddBook && (
+      {renderForm && (
         <div className={Styles.addBookModal}>
           <BookForm
+            formHeader="Add Book to Library"
+            submitText="Add"
             onBookFormSubmit={onBookFormSubmit}
-            hideAddBookModal={hideAddBookModal}
+            hideModal={hideModal}
           />
         </div>
       )}

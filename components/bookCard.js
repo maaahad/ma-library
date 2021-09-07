@@ -17,29 +17,21 @@ import BookForm from "./bookForm";
 
 // library
 import { useLibrary } from "./libraryProvider";
+import { useModal } from "../lib/hooks";
 
 // sass styles
 import Styles from "../styles/bookCard.module.sass";
 
 function CardHeader({ book }) {
   const { toggleBookReadStatus, editBookToLibrary } = useLibrary();
-  const [displayEditBook, toggleDisplayEditBook] = useReducer(
-    (displayEditBook) => !displayEditBook,
-    false
-  );
+  const [renderForm, renderModal, hideModal] = useModal();
+
   const toggleStatus = () => {
     toggleBookReadStatus(book.id);
   };
 
-  const displayEditBookModal = () => {
-    toggleDisplayEditBook();
-  };
-  const hideEditBookModal = () => {
-    toggleDisplayEditBook();
-  };
-
   const onBookFormSubmit = ({ title, author, pages, readStatus }) => {
-    hideEditBookModal();
+    hideModal();
     // TODO: dno't do anything in case book has not been changed
     editBookToLibrary({ ...book, title, author, pages, readStatus });
   };
@@ -59,24 +51,20 @@ function CardHeader({ book }) {
           uncheckedText="Not Read"
           toggleStatus={toggleStatus}
         />
-        <button
-          type="button"
-          className={Styles.edit}
-          onClick={displayEditBookModal}
-        >
+        <button type="button" className={Styles.edit} onClick={renderModal}>
           <span>Edit This Book</span>
           <BiEdit />
         </button>
       </div>
 
       {/* add book modal */}
-      {displayEditBook && (
+      {renderForm && (
         <div className={Styles.editBookModal}>
           <BookForm
             formHeader="Edit Book to Library"
             submitText="Edit"
             onBookFormSubmit={onBookFormSubmit}
-            hideAddBookModal={hideEditBookModal}
+            hideModal={hideModal}
             bookState={{ ...book }}
           />
         </div>
@@ -87,8 +75,15 @@ function CardHeader({ book }) {
 
 function CardActions({ book }) {
   const { removeBookFromLibrary, updateBookLikes } = useLibrary();
-  const removeBook = () => {
+  const [renderConfirmMessage, renderModal, hideModal] = useModal();
+
+  const confirmRemoveBook = () => {
+    hideModal();
     removeBookFromLibrary(book.id);
+  };
+  const removeBook = () => {
+    renderModal();
+    // removeBookFromLibrary(book.id);
   };
 
   const likeBook = () => {
@@ -115,6 +110,25 @@ function CardActions({ book }) {
         <span>Delete this book</span>
         <BiTrash />
       </button>
+
+      {/* confirm message on deletion */}
+      {renderConfirmMessage && (
+        <div className={Styles.deletionConfirmationContainer}>
+          <div className={Styles.deletionConfirmation}>
+            <h6>Confirm to delete the book</h6>
+            <div className={Styles.confirmationButtonGroup}>
+              <button type="button" onClick={hideModal}>
+                <BiTrash />
+                <span>Cancel</span>
+              </button>
+              <button type="button" onClick={confirmRemoveBook}>
+                <span>Confirm</span>
+                <BiTrash />
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

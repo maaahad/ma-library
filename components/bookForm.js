@@ -11,10 +11,10 @@ import ToggleSwitch from "./utilities/toggleswitch";
 
 // NOTE: we may need different ID prefix for different form use
 export default function BookForm({
-  formHeader = "Add Book to Library",
-  submitText = "Add",
+  formHeader,
+  submitText,
   onBookFormSubmit = (f) => f,
-  hideAddBookModal = (f) => f,
+  hideModal = (f) => f,
   bookState = {
     title: "",
     author: "",
@@ -28,7 +28,7 @@ export default function BookForm({
   const [inputsState, setInputsState] = useReducer(inputsReducer, bookState);
 
   const leaveBookForm = () => {
-    hideAddBookModal();
+    hideModal();
   };
 
   const handleInputChange = (event) => {
