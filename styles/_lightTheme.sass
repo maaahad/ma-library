@@ -6,15 +6,21 @@ $vv_small: 300px
 $primary_color: #313131
 $secondary_color: #6d6d6d
 $tertiary_color: #9e9e9e
+$color_ok: #48e98a
+$color_warning: #fe4551
 
 // background color
 $bg_color_primary: #fff
 $bg_color_secondary: #000
 $bg_color_box: #f4f4f4
 $bg_color_modal: rgba(#000, .2)
+$bg_color_redish: #fe4551
+$bg_color_greenish: #48e98a
 
 // border
 $border_color_primary: #e4e4e4
+$border_color_redish: #fe4551
+$border_color_greenish: #48e98a
 
 // zindex
 $zindex_nav: 100
@@ -25,10 +31,17 @@ $zindex_toggle_text: 104
 $zindex_modal: 105
 
 // book status color 
-$book_read: #48e98a
-$book_not_read: #fe4551
+// $book_read: #48e98a
+// $book_not_read: #fe4551
 
 // ------------------------ mixins ------------------------- //
+// mixin for box-shadow 
+@mixin boxShadow($shadowColor: $bg_color_secondary)
+    box-shadow: rgba($shadowColor, 0.3) 0px 1px 2px 0px, rgba($shadowColor, 0.15) 0px 1px 3px 1px
+
+@mixin boxShadowHover($shadowColor: $bg_color_secondary)
+    box-shadow: rgba($shadowColor, 0.24) 0px 3px 8px
+
 // mixins for text
 @mixin titleText($textColor: $primary_color)
     font-size: 20px

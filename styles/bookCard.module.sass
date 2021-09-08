@@ -50,7 +50,7 @@
             height: 20px
             border-radius: 50%
             cursor: pointer
-            background-color: lightTheme.$book_not_read
+            background-color: lightTheme.$bg_color_redish
 
         & svg
             width: 14px
@@ -60,7 +60,7 @@
     input:checked
         // important to use adjacent sibling combinator
         & + .toggleWrapper
-            background-color: lightTheme.$book_read
+            background-color: lightTheme.$bg_color_greenish
 
     .edit
         @include lightTheme.flexCenter
@@ -87,20 +87,6 @@
             width: 14px
             height: 14px
             color: white
-
-.editBookModal, .deletionConfirmationContainer
-    position: fixed
-    top: 0
-    left: 0
-    bottom: 0
-    right: 0
-    margin: 0
-    width: 100%
-    height: 100vh
-    background-color: lightTheme.$bg_color_modal
-    z-index: lightTheme.$zindex_modal
-    padding: 40px
-    @include lightTheme.flexCenter
 
 .cardActions
     padding: 10px 15px
@@ -194,50 +180,22 @@
             & > *
                 color: lightTheme.$primary_color
 
-    .deletionConfirmation
-        width: 420px
+.editBookModal, .deletionConfirmationModal
+    position: fixed
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    margin: 0
+    width: 100%
+    height: 100vh
+    background-color: lightTheme.$bg_color_modal
+    z-index: lightTheme.$zindex_modal
+    padding: 40px
+    @include lightTheme.flexCenter
+
+.deletionConfirmationModal
+    & > div
+        background-color: lightTheme.$bg_color_box
+        width: auto
         height: 100px
-        background-color: white
-        padding: 20px
-        display: flex
-        flex-flow: column wrap
-        align-items: stretch
-        justify-content: space-between
-
-        & > h6
-            margin: 0
-            padding: 0
-            @include lightTheme.subtitleText($textColor: red)
-            text-transform: uppercase
-
-        .confirmationButtonGroup
-            display: flex
-            flex-flow: row nowrap
-            align-items: center
-            justify-content: space-between
-
-            & > button
-                @include lightTheme.flexCenter
-                width: 100px
-                height: 24px
-                padding: 4px
-                border-radius: 12px
-                background-color: lightTheme.$bg_color_secondary
-                border: none
-                cursor: pointer
-
-                & > span
-                    display: inline-block
-                    @include lightTheme.subtitleText($textColor: white)
-
-                & > svg
-                    color: white
-
-                & > * + *
-                    margin-inline-start: 5px
-
-            & > button:nth-child(1):hover
-                background-color: #48e98a
-
-            & > button:nth-child(2):hover
-                background-color: #fe4551

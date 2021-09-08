@@ -1,0 +1,79 @@
+@use "../lightTheme"
+
+.messageContainer
+    padding: 20px
+    // border: 1px solid lightTheme.$border_color_redish
+    display: flex
+    flex-flow: column wrap
+    align-items: stretch
+    justify-content: space-between
+
+    & > * + *
+        margin-block-start: 10px
+
+    & > h6
+        margin: 0
+        padding: 0
+        @include lightTheme.subtitleText($textColor: lightTheme.$primary_color)
+
+.buttonGroup
+    display: flex
+    flex-flow: row nowrap
+    align-items: center
+    justify-content: space-between
+
+    .cancelButton, .confirmButton
+        display: flex
+        flex-flow: row nowrap
+        align-items: center
+        justify-content: center
+        background-color: transparent
+        border: 1px solid lightTheme.$primary_color
+        height: 24px
+        padding: 4px 5px
+        border-radius: 12px
+        min-width: 80px
+        transition: all .3s ease-in
+        @include lightTheme.boxShadow($shadowColor: lightTheme.$primary_color)
+
+        & > *
+            transition: all .3s ease-in
+
+        & > * + *
+            margin-inline-start: 5px
+
+        & > span
+            text-transform: uppercase
+            @include lightTheme.normalText($textColor: lightTheme.$primary_color)
+
+        & > svg
+            width: 16px
+            height: 16px
+
+    .cancelButton
+        & > svg
+            color: lightTheme.$color_ok
+
+    .confirmButton
+        & > svg
+            color: lightTheme.$color_warning
+
+    .cancelButton:hover
+        cursor: pointer
+        border: 1px solid transparent
+        background-color: lightTheme.$bg_color_secondary
+        @include lightTheme.boxShadowHover($shadowColor: lightTheme.$bg_color_secondary)
+
+        & > span
+            color: white
+
+    .confirmButton:hover
+        cursor: pointer
+        border: 1px solid transparent
+        background-color: lightTheme.$bg_color_secondary
+        @include lightTheme.boxShadowHover($shadowColor: lightTheme.$bg_color_secondary)
+        // background-color: lightTheme.$bg_color_redish
+        // @include lightTheme.boxShadowHover($shadowColor: lightTheme.$bg_color_redish)
+
+        & > span
+            color: white

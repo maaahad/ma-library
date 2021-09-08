@@ -14,6 +14,7 @@ import {
 // components
 import ToggleSwitch from "./utilities/toggleswitch";
 import BookForm from "./bookForm";
+import ConfirmationMessage from "./utilities/confirmationMessage";
 
 // library
 import { useLibrary } from "./libraryProvider";
@@ -113,20 +114,15 @@ function CardActions({ book }) {
 
       {/* confirm message on deletion */}
       {renderConfirmMessage && (
-        <div className={Styles.deletionConfirmationContainer}>
-          <div className={Styles.deletionConfirmation}>
-            <h6>Confirm to delete the book</h6>
-            <div className={Styles.confirmationButtonGroup}>
-              <button type="button" onClick={hideModal}>
-                <BiTrash />
-                <span>Cancel</span>
-              </button>
-              <button type="button" onClick={confirmRemoveBook}>
-                <span>Confirm</span>
-                <BiTrash />
-              </button>
-            </div>
-          </div>
+        <div className={Styles.deletionConfirmationModal}>
+          {/* container is responsible to specify the size and background colror of confirmation message */}
+          <ConfirmationMessage
+            confirmationText="Are you really want to delete this book?"
+            confirmButtonText="Yes"
+            cancelButtonText="No"
+            onConfirmButtonClick={confirmRemoveBook}
+            onCancelButtonClick={hideModal}
+          />
         </div>
       )}
     </div>
