@@ -1,0 +1,64 @@
+@use "../lightTheme"
+
+.toogleIconContainer
+    height: 100%
+    @include lightTheme.flexCenter
+
+    & > input
+        display: none
+
+.iconGroup
+    height: 100%
+    width: 100px
+    display: flex
+    flex-flow: row nowrap
+    align-items: center
+    justify-content: space-between
+    border-radius: 15px
+    @include lightTheme.boxShadow($shadowColor: lightTheme.$primary_color)
+    transition: all .3s ease-in
+
+    & > *
+        @include lightTheme.flexCenter
+        transition: all .3s ease-in
+
+    & > * + *
+        margin-inline-start: 0
+
+    & > *:hover
+        cursor: pointer
+
+.tableView, .gridView
+    height: 100%
+    width: 50%
+    & > svg
+        width: 16px
+        height: 16px
+        transition: all .3s ease-in
+
+.tableView
+    border-top-left-radius: 15px
+    border-bottom-left-radius: 15px
+    background-color: transparent
+    & > svg
+        color: lightTheme.$tertiary_color
+
+.gridView
+    border-top-right-radius: 15px
+    border-bottom-right-radius: 15px
+    background-color: lightTheme.$bg_color_secondary
+
+    & > svg
+        color: white
+
+.toogleIconContainer > input:checked
+    & + .iconGroup > .tableView
+        background-color: lightTheme.$bg_color_secondary
+        & > svg
+            color: white
+
+    & + .iconGroup > .gridView
+        background-color: transparent
+
+        & > svg
+            color: lightTheme.$tertiary_color

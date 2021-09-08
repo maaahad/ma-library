@@ -3,7 +3,7 @@ import React, { useState, useReducer } from "react";
 // next
 
 // react-icons
-import { BiTrash, BiBookAdd } from "react-icons/bi";
+import { BiTrash, BiBookAdd, BiTable, BiGridAlt } from "react-icons/bi";
 
 // libs
 import { useLibrary } from "./libraryProvider";
@@ -14,12 +14,14 @@ import Styles from "../styles/mainTop.module.sass";
 // components
 import BookForm from "./bookForm";
 import ConfirmationMessage from "./utilities/confirmationMessage";
+import ToggleIcon from "./utilities/toggleIcon";
 
 // in-house hooks
 import { useModal } from "../lib/hooks";
 
-export default function MainTop() {
+export default function MainTop({ gridView, toggleView = (f) => f }) {
   const { library, clearLibrary, addBookToLibrary } = useLibrary();
+  // const [gridView, toggleView] = useReducer((gridView) => !gridView, false);
   const [renderForm, renderModal, hideModal] = useModal();
   const [
     renderConfirmMessage,
@@ -32,7 +34,7 @@ export default function MainTop() {
     clearLibrary();
   };
   const onClearLibrary = () => {
-    // display this only there is book available
+    // display confirmationMessage only if there is book available in the library
     if (library.length) renderConfirmMessageModal();
   };
 
@@ -55,24 +57,35 @@ export default function MainTop() {
           <span>Clear Library</span>
         </button>
         {/* add display option Grid or Table using toggleSwitch */}
+        <div className={Styles.viewToggler}>
+          <ToggleIcon
+            checked={gridView}
+            id="__grid_or_table_view"
+            leftIcon={<BiTable />}
+            rightIcon={<BiGridAlt />}
+            toggleIcon={toggleView}
+          />
+        </div>
+
         <button className={Styles.addBook} onClick={renderModal}>
           <BiBookAdd />
           <span>Add Book</span>
         </button>
-        {/* confirm message on deletion */}
-        {renderConfirmMessage && (
-          <div className={Styles.deletionConfirmationModal}>
-            {/* container is responsible to specify the size and background colror of confirmation message */}
-            <ConfirmationMessage
-              confirmationText="Are you really want to clear MA-Library?"
-              confirmButtonText="Yes"
-              cancelButtonText="No"
-              onConfirmButtonClick={onConfirmClearLibrary}
-              onCancelButtonClick={hideConfirmMessageModal}
-            />
-          </div>
-        )}
       </div>
+
+      {/* confirm message on deletion */}
+      {renderConfirmMessage && (
+        <div className={Styles.deletionConfirmationModal}>
+          {/* container is responsible to specify the size and background colror of confirmation message */}
+          <ConfirmationMessage
+            confirmationText="Are you really want to clear MA-Library?"
+            confirmButtonText="Yes"
+            cancelButtonText="No"
+            onConfirmButtonClick={onConfirmClearLibrary}
+            onCancelButtonClick={hideConfirmMessageModal}
+          />
+        </div>
+      )}
 
       {/* add book modal */}
       {renderForm && (

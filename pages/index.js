@@ -1,5 +1,5 @@
 // react
-import React, { useState } from "react";
+import React, { useState, useReducer } from "react";
 
 // next
 import Head from "next/head";
@@ -15,6 +15,8 @@ import Books from "../components/books";
 import Styles from "../styles/home.module.sass";
 
 export default function Home() {
+  // this will control the View toggler
+  const [gridView, toggleView] = useReducer((gridView) => !gridView, false);
   return (
     <div className={Styles.container}>
       <Head>
@@ -26,7 +28,7 @@ export default function Home() {
       </Head>
       {/* the following will be part of main */}
       <div className={Styles.mainTop}>
-        <MainTop />
+        <MainTop toggleView={toggleView} />
       </div>
       {/* source and info */}
       <div className={Styles.sourceNinfo}>

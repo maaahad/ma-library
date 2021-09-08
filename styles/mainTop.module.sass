@@ -59,6 +59,11 @@
         & > svg
             color: lightTheme.$color_ok
 
+    .viewToggler
+        width: auto
+        height: 30px
+        display: none
+
     .summary
         background-color: lightTheme.$bg_color_secondary
         // border: 1px solid lightTheme.$primary_color
@@ -100,3 +105,9 @@
         background-color: lightTheme.$bg_color_box
         width: auto
         height: 100px
+
+// media consiton to display view togger
+@media screen and (min-width: lightTheme.$breakpoint_md)
+    .container
+        .viewToggler
+            display: block
