@@ -21,33 +21,43 @@
         flex-flow: row nowrap
         align-items: center
         justify-content: center
-        width: 120px
+        width: 140px
         height: 30px
         border-radius: 15px
         cursor: pointer
         background-color: lightTheme.$bg_color_primary
-        transition: all .3s
-        border: 1px solid lightTheme.$primary_color
+        transition: all .3s ease-in
+        border: 1px solid transparent
         align-self: center
-        box-shadow: 0 8px 8px 0 rgba(lightTheme.$bg_color_secondary, 0.1)
+        @include lightTheme.boxShadow($shadowColor: lightTheme.$primary_color)
+
+        & > *
+            transition: all .3s ease-in
 
         & > * + *
             margin-inline-start: 5px
 
         & > span
             @include lightTheme.subtitleText($textColor:lightTheme.$primary_color )
+            text-transform: uppercase
 
         & > svg
             width: 16px
             height: 16px
             color: lightTheme.$primary_color
-            transition: all .3s
 
         &:hover
             background-color: lightTheme.$bg_color_secondary
-            box-shadow: 0px 10px 10px 0 rgba(lightTheme.$bg_color_secondary, 0.4)
-            & > svg, & > span
+            @include lightTheme.boxShadow($shadowColor: lightTheme.$bg_color_secondary)
+            & > span
                 color: #fff
+
+    .clearStore
+        & > svg
+            color: lightTheme.$color_warning
+    .addBook
+        & > svg
+            color: lightTheme.$color_ok
 
     .summary
         background-color: lightTheme.$bg_color_secondary
@@ -68,16 +78,25 @@
         & > p + p
             margin-block-start: 5px
 
-    .addBookModal
-        position: fixed
-        top: 0
-        left: 0
-        bottom: 0
-        right: 0
-        margin: 0
-        width: 100%
-        height: 100vh
-        background-color: lightTheme.$bg_color_modal
-        z-index: lightTheme.$zindex_modal
-        padding: 40px
-        @include lightTheme.flexCenter
+.addBookModal, .deletionConfirmationModal
+    position: fixed
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    margin: 0
+    width: 100%
+    height: 100vh
+    background-color: lightTheme.$bg_color_modal
+    z-index: lightTheme.$zindex_modal
+    padding: 40px
+    @include lightTheme.flexCenter
+
+.deletionConfirmationModal
+    // FIX_BUG
+    // not sure why I have to do this
+    left: -20px
+    & > div
+        background-color: lightTheme.$bg_color_box
+        width: auto
+        height: 100px

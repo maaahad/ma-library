@@ -53,7 +53,7 @@ function CardHeader({ book }) {
           toggleStatus={toggleStatus}
         />
         <button type="button" className={Styles.edit} onClick={renderModal}>
-          <span>Edit This Book</span>
+          <span>Edit</span>
           <BiEdit />
         </button>
       </div>
@@ -84,7 +84,6 @@ function CardActions({ book }) {
   };
   const removeBook = () => {
     renderModal();
-    // removeBookFromLibrary(book.id);
   };
 
   const likeBook = () => {
@@ -108,7 +107,7 @@ function CardActions({ book }) {
         </div>
       </div>
       <button className={Styles.removeMe} onClick={removeBook}>
-        <span>Delete this book</span>
+        <span>Delete</span>
         <BiTrash />
       </button>
 
