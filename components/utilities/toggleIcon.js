@@ -11,6 +11,8 @@ export default function ToggleIcon({
   id,
   leftIcon,
   rightIcon,
+  leftTitle,
+  rightTitle,
   toggleIcon = (f) => f,
 }) {
   console.log("Checked: ", checked);
@@ -18,8 +20,12 @@ export default function ToggleIcon({
     <div className={Styles.toogleIconContainer}>
       <input id={id} type="checkbox" checked={checked} onChange={toggleIcon} />
       <label htmlFor={id} className={Styles.iconGroup}>
-        <div className={Styles.tableView}>{leftIcon}</div>
-        <div className={Styles.gridView}>{rightIcon}</div>
+        <div className={Styles.tableView} title={leftTitle}>
+          {leftIcon}
+        </div>
+        <div className={Styles.gridView} title={rightTitle}>
+          {rightIcon}
+        </div>
       </label>
     </div>
   );

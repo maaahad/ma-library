@@ -39,25 +39,25 @@
 .tableView
     border-top-left-radius: 15px
     border-bottom-left-radius: 15px
-    background-color: transparent
+    background-color: lightTheme.$bg_color_secondary
     & > svg
-        color: lightTheme.$tertiary_color
+        color: white
 
 .gridView
     border-top-right-radius: 15px
     border-bottom-right-radius: 15px
-    background-color: lightTheme.$bg_color_secondary
+    background-color: transparent
 
     & > svg
-        color: white
+        color: lightTheme.$tertiary_color
 
 .toogleIconContainer > input:checked
-    & + .iconGroup > .tableView
+    & + .iconGroup > .gridView
         background-color: lightTheme.$bg_color_secondary
         & > svg
             color: white
 
-    & + .iconGroup > .gridView
+    & + .iconGroup > .tableView
         background-color: transparent
 
         & > svg

@@ -63,6 +63,8 @@ export default function MainTop({ gridView, toggleView = (f) => f }) {
             id="__grid_or_table_view"
             leftIcon={<BiTable />}
             rightIcon={<BiGridAlt />}
+            leftTitle="Table View"
+            rightTitle="Grid View"
             toggleIcon={toggleView}
           />
         </div>
