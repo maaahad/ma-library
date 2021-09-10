@@ -54,12 +54,19 @@ export default function Home() {
         {/* source and info */}
         <div className={Styles.sourceNinfo}>
           {/* the following two div will be replace by Link from NextJS */}
-          <div className={Styles.info}>
+          <div
+            className={Styles.info}
+            title="This project is done as part of Fullstack Courses by The Odin Project"
+          >
             <BiInfoCircle />
           </div>
-          <div className={Styles.code}>
+          <a
+            className={Styles.code}
+            href="https://github.com/maaahad/ma-library"
+            target="_blank"
+          >
             <BiCodeAlt />
-          </div>
+          </a>
         </div>
         {/* books list */}
         <div className={Styles.books}>

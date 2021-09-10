@@ -15,6 +15,7 @@ import Styles from "../styles/mainTop.module.sass";
 import BookForm from "./bookForm";
 import ConfirmationMessage from "./utilities/confirmationMessage";
 import ToggleIcon from "./utilities/toggleIcon";
+import Summary from "./summary";
 
 // in-house hooks
 import { useModal } from "../lib/hooks";
@@ -45,11 +46,9 @@ export default function MainTop({ gridView, toggleView = (f) => f }) {
 
   return (
     <div className={Styles.container}>
+      {/* we put the summary here */}
       <div className={Styles.summary}>
-        {/* TODO: we need to add a meter form input here to show read books signal */}
-        <p>Total Books : {library.length}</p>
-        <p>Number of Books read (TODO : use library): 40</p>
-        <p>Number of Books to be read (TODO : use library): 960</p>
+        <Summary />
       </div>
       <div className={Styles.interaction}>
         <button className={Styles.clearStore} onClick={onClearLibrary}>
