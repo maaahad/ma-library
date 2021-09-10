@@ -2,13 +2,48 @@
 
 .bookRow
     & > *
-        padding: 5px
+        padding: 5px 10px
         @include lightTheme.normalText($textColor: lightTheme.$primary_color)
-        text-align: left
         background-color: lightTheme.$bg_color_box
 
     th
         @include lightTheme.subtitleText($textColor: lightTheme.$primary_color)
+
+    .title, .author, .pages
+        text-align: left
+
+    .readStatus
+        @include lightTheme.flexCenter
+
+    .likes, .messages, .edit, .delete
+        text-align: center
+        & > button
+            display: flex
+            flex-flow: row nowrap
+            align-items: center
+            justify-content: center
+            cursor: pointer
+            border: none
+            background-color: transparent
+
+            & > * + *
+                margin-inline-start: 5px
+
+            & > svg
+                width: 16px
+                height: 16px
+                color: lightTheme.$primary_color
+
+            & > span
+                @include lightTheme.normalText($textColor: lightTheme.$primary_color)
+
+    .likes:hover, .messages:hover
+        & > button > svg
+            color: lightTheme.$color_ok
+
+    .edit:hover, .delete:hover
+        & > button > svg
+            color: lightTheme.$color_warning
 
 // modal
 .editBookModal, .deletionConfirmationModal

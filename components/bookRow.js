@@ -56,10 +56,12 @@ export default function BookRow({ book }) {
   return (
     <>
       <tr className={Styles.bookRow}>
-        <th scope="row">{book.title}</th>
+        <th scope="row" className={Styles.title}>
+          {book.title}
+        </th>
         <td className={Styles.author}>{book.author}</td>
-        <td>{book.pages}</td>
-        <td>
+        <td className={Styles.pages}>{book.pages}</td>
+        <td className={Styles.readStatus}>
           <ToggleSwitch
             checked={book.readStatus}
             id={book.id}
@@ -68,24 +70,24 @@ export default function BookRow({ book }) {
             toggleStatus={onToggleBookReadStatus}
           />
         </td>
-        <td>
+        <td className={Styles.likes}>
           <button type="button" onClick={onLike}>
             <BiLike />
             <span>{book.likes}</span>
           </button>
         </td>
-        <td>
+        <td className={Styles.messages}>
           <button>
             <BiMessageRounded />
             <span>{book.comments.length}</span>
           </button>
         </td>
-        <td>
+        <td className={Styles.edit}>
           <button type="button" onClick={renderEditFormModal}>
             <BiEdit />
           </button>
         </td>
-        <td>
+        <td className={Styles.delete}>
           <button type="button" onClick={onRemove}>
             <BiTrash />
           </button>
