@@ -1,16 +1,14 @@
 @use "lightTheme"
 
-.container
-    display: flex
-    flex-flow: row nowrap
-    align-items: flex-start
-    justify-content: space-between
-
-    & > * + *
-        margin-block-start: 20px
+// .container
+    // display: flex
+    // flex-flow: row nowrap
+    // align-items: flex-start
+    // justify-content: space-between
+    // & > * + *
+    //     margin-block-start: 20px
 
 .mainRight
-    flex: 1
     flex-flow: column wrap
     align-items: stretch
     justify-content: space-between
@@ -61,11 +59,26 @@
     .sourceNinfo
         left: calc(100% - 20px)
 
+    // .container
+
+    .mainRight
+        margin-inline-start: 320px
+
     .mainLeft
-        position: absolute
-        top: 0
+        position: fixed
+        top: 60px
         left: 0
         display: block
-        width: 400px
-        height: 100%
-        background-color: green
+        width: 320px
+        // padding will be controlled by child ...
+        // as we will add form , which is using padding 20px
+        // to make alignment right with mainRight, we set padding 0
+        padding: 0
+        // we substract the height of nav and footer
+        // TODO: there is an issue here.......????
+        // height: calc(100vh - 60px - 50px)
+        // this takes the width of footer by pushing the footer to right
+        height: calc(100vh - 60px)
+        border-inline-end: 1px solid lightTheme.$border_color_primary
+        border-block-end: 1px solid lightTheme.$border_color_primary
+        overflow-y: auto

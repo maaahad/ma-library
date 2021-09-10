@@ -9,7 +9,7 @@
     justify-content: space-between
     header
         @include lightTheme.flexCenter
-        position: absolute
+        position: fixed
         top: 0
         left: 0
         width: 100%
@@ -17,10 +17,11 @@
         padding: 10px 20px
         background-color: lightTheme.$bg_color_primary
         border-block-end: 1px solid lightTheme.$border_color_primary
+        z-index: lightTheme.$zindex_nav
     main
         flex: 1
-        margin-block-start: 80px
-        padding: 0 20px 10px 20px
+        margin-block-start: 60px
+        padding: 20px 20px 20px 20px
         background-color: lightTheme.$bg_color_primary
 
     footer
@@ -29,6 +30,7 @@
         padding: 10px 20px
         background-color: lightTheme.$bg_color_primary
         border-block-start: 1px solid lightTheme.$border_color_primary
+        border-block-end: 1px solid lightTheme.$border_color_primary
         display: flex
         flex-flow: row nowrap
         align-items: center
@@ -51,3 +53,10 @@
 
         & > div > span
             text-transform: uppercase
+
+@media screen and (min-width: lightTheme.$breakpoint_md)
+    .container
+        // we need to move the footer 320px right on md screen size to 
+        // accomodate mainRight
+        footer
+            margin-inline-start: 320px

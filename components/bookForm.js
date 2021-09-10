@@ -21,6 +21,7 @@ export default function BookForm({
     pages: 1,
     readStatus: false,
   },
+  displayModalHideButton = true,
 }) {
   // We will create a custom hook for each input
   // and then a custom hook for overall form
@@ -62,9 +63,11 @@ export default function BookForm({
     <div className={Styles.bookForm}>
       <div className={Styles.bookFormHeader}>
         <h6>{formHeader}</h6>
-        <button type="button" onClick={leaveBookForm}>
-          <BiX />
-        </button>
+        {displayModalHideButton && (
+          <button type="button" onClick={leaveBookForm}>
+            <BiX />
+          </button>
+        )}
       </div>
       <div className={Styles.bookDetailsTitle}>
         <div></div>
@@ -115,14 +118,6 @@ export default function BookForm({
               uncheckedText="Not Read"
               toggleStatus={toggleReadStatus}
             />
-            {/* <input
-              id="readStatus"
-              type="checkbox"
-              name="readStatus"
-              checked={inputsState.readStatus}
-              onChange={handleInputChange}
-            />
-            <label htmlFor="readStatus">Already Read</label> */}
           </div>
         </div>
 

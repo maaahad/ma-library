@@ -1,12 +1,13 @@
 @use "lightTheme"
 
 .bookForm
-    // need media contiditon for setting up width 
+    // need media condition for setting up width 
     width: 100%
+    max-width: 520px
     height: auto
     margin: auto
     background-color: white
-    padding: 30px
+    padding: 20px
     // border: 1px solid #fe4551
 
     & > * + *
@@ -116,12 +117,6 @@
         display: flex
         flex-flow: row nowrap
         justify-content: flex-end
-        // & > label
-        //     @include lightTheme.normalText($textColor: lightTheme.$primary_color)
-        //     height: 20px
-        //     padding: 4px 0
-        //     text-transform: capitalize
-        //     margin-inline-start: 2px
 
     .pagesNreadStatus
         display: flex
@@ -171,39 +166,6 @@
             &:nth-child(2)
                 box-shadow: #48e98a 0px 4px 14px 0px
 
-@media screen and (min-width: 520px)
-    .bookForm
-        width: 520px
-
-// .textInputWrapper
-
-//     position: relative
-//     width: 100%
-//     height: 40px
-//     border: 1px solid lightTheme.$border_color_primary
-
-//     label
-//         height: 30px
-//         background-color: transparent
-//         padding: 5px 10px
-//         opacity: 0
-//         position: absolute
-//         left: 10px
-//         bottom: 0
-//         transition: all .3s ease-in
-//         // transition: opacity .3s linear
-//         // transition: bottom .3s linear
-
-//     input
-//         width: 100%
-//         height: 100%
-//         outline: none
-//         border-width: 0
-//         background-color: lightTheme.$bg_color_box
-
-//     input:focus, input:valid
-
-//         & + label
-//             bottom: 25px
-//             opacity: 1
-//             background-color: white
+// @media screen and (min-width: 520px)
+//     .bookForm
+//         width: 520px

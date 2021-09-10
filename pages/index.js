@@ -12,6 +12,7 @@ import MainTop from "../components/mainTop";
 import BooksGrid from "../components/booksGrid";
 import BooksTable from "../components/booksTable";
 import FilterNSort from "../components/filterNsort";
+import MainLeft from "../components/mainLeft";
 
 // sass styls
 import Styles from "../styles/index.module.sass";
@@ -42,11 +43,10 @@ export default function Home() {
       </Head>
       {/* the following will be part of main */}
 
-      {/* TODO: need to think about mainLeft */}
-      {/* <div className={Styles.mainLeft}>
-        This will be used as book add form in window-width: md
-      </div> */}
-
+      <div className={Styles.mainLeft}>
+        <MainLeft />
+      </div>
+      {/* A separate component for MainRight */}
       <div className={Styles.mainRight}>
         <div className={Styles.mainTop}>
           <MainTop toggleView={toggleView} gridView={gridView} />
