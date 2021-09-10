@@ -11,7 +11,7 @@ export default function Summary() {
 
   return (
     <div className={Styles.summaryContainer}>
-      <div ref={statusBarRef} classname={Styles.statusBar}>
+      <div ref={statusBarRef} className={Styles.statusBar}>
         This is status bar
       </div>
       <div>
