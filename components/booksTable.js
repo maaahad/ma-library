@@ -3,15 +3,31 @@
 // in-house hooks
 import { useLibrary } from "./libraryProvider";
 
-// sass styles
+// components
+import BookRow from "./bookRow";
 
-export default function BookTable() {
+// sass styles
+import Styles from "../styles/booksTable.module.sass";
+
+export default function BooksTable() {
   const { library } = useLibrary();
   return (
-    <div>
-      {library.map((book, index) => (
-        <p key={index}>{book.title}</p>
-      ))}
-    </div>
+    <table className={Styles.booksTable}>
+      <thead>
+        <th scope="col">Title</th>
+        <th scope="col">Author</th>
+        <th scope="col">Pages</th>
+        <th scope="col">Read Status</th>
+        <th scope="col">Likes</th>
+        <th scope="col">Coments</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </thead>
+      <tbody>
+        {library.map((book, index) => (
+          <BookRow key={index} book={book} />
+        ))}
+      </tbody>
+    </table>
   );
 }

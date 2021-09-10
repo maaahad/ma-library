@@ -1,0 +1,32 @@
+@use "lightTheme"
+
+.bookRow
+    & > *
+        padding: 5px
+        @include lightTheme.normalText($textColor: lightTheme.$primary_color)
+        text-align: left
+        background-color: lightTheme.$bg_color_box
+
+    th
+        @include lightTheme.subtitleText($textColor: lightTheme.$primary_color)
+
+// modal
+.editBookModal, .deletionConfirmationModal
+    position: fixed
+    top: 0
+    left: 0
+    bottom: 0
+    right: 0
+    margin: 0
+    width: 100%
+    height: 100vh
+    background-color: lightTheme.$bg_color_modal
+    z-index: lightTheme.$zindex_modal
+    padding: 40px
+    @include lightTheme.flexCenter
+
+.deletionConfirmationModal
+    & > div
+        background-color: lightTheme.$bg_color_box
+        width: auto
+        height: 100px

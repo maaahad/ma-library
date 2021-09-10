@@ -10,7 +10,7 @@ import { BiCodeAlt, BiInfoCircle } from "react-icons/bi";
 // components
 import MainTop from "../components/mainTop";
 import BooksGrid from "../components/booksGrid";
-import BookTable from "../components/booksTable";
+import BooksTable from "../components/booksTable";
 import FilterNSort from "../components/filterNsort";
 
 // sass styls
@@ -66,7 +66,7 @@ export default function Home() {
           <div className={Styles.filterNsort}>
             <FilterNSort />
           </div>
-          {gridView ? <BooksGrid /> : <BookTable />}
+          {gridView ? <BooksGrid /> : <BooksTable />}
         </div>
       </div>
     </div>

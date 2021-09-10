@@ -3,13 +3,7 @@ import React, { useReducer } from "react";
 // next
 import Image from "next/image";
 // react icons
-import {
-  BiEdit,
-  BiBookReader,
-  BiLike,
-  BiMessageRounded,
-  BiTrash,
-} from "react-icons/bi";
+import { BiEdit, BiLike, BiMessageRounded, BiTrash } from "react-icons/bi";
 
 // components
 import ToggleSwitch from "./utilities/toggleswitch";

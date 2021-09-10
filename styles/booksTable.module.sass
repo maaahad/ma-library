@@ -1,0 +1,41 @@
+@use "lightTheme"
+
+.booksTable
+    table-layout: fixed
+    // border-collapse: collapse
+
+    thead
+        // background-color: lightTheme.$bg_color_box
+        background-color: lightTheme.$bg_color_greenish
+
+    thead th
+        text-align: center
+        text-transform: uppercase
+        padding: 5px
+        @include lightTheme.subtitleText($textColor: lightTheme.$primary_color)
+
+    thead th:nth-child(1)
+        width: 20%
+    thead th:nth-child(2)
+        width: 15%
+    thead th:nth-child(3)
+        width: 10%
+    thead th:nth-child(4)
+        width: 15%
+    thead th:nth-child(5)
+        width: 10%
+    thead th:nth-child(6)
+        width: 10%
+    thead th:nth-child(7)
+        width: 10%
+    thead th:nth-child(8)
+        width: 10%
+
+    tbody
+        background-color: lightTheme.$bg_color_primary
+
+        // tr:nth-child(even)
+        //     background-color: lightTheme.$bg_color_box
+
+        // tr:nth-child(even)
+        //     background-color: lightTheme.$bg_color_modal
