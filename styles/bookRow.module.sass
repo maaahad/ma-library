@@ -18,16 +18,16 @@
     .likes, .messages, .edit, .delete
         text-align: center
         & > button
+            width: 100%
             display: flex
             flex-flow: row nowrap
             align-items: center
             justify-content: center
-            cursor: pointer
             border: none
             background-color: transparent
 
             & > * + *
-                margin-inline-start: 5px
+                margin-inline-start: 2px
 
             & > svg
                 width: 16px
@@ -37,12 +37,14 @@
             & > span
                 @include lightTheme.normalText($textColor: lightTheme.$primary_color)
 
-    .likes:hover, .messages:hover
-        & > button > svg
+    .likes > button:hover, .messages > button:hover
+        cursor: pointer
+        & > svg
             color: lightTheme.$color_ok
 
-    .edit:hover, .delete:hover
-        & > button > svg
+    .edit > button:hover, .delete > button:hover
+        cursor: pointer
+        & > svg
             color: lightTheme.$color_warning
 
 // modal
