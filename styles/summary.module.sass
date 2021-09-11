@@ -4,3 +4,66 @@
     width: 100%
     @include lightTheme.subtitleText($textColor: lightTheme.$primary_color)
     text-transform: uppercase
+
+    & > * + *
+        margin-block-start: 10px
+
+.statusBarContainer
+    width: 100%
+    height: 16px
+    display: flex
+    flex-flow: row nowrap
+    align-items: stretch
+    justify-content: space-between
+    @include lightTheme.boxShadow($shadowColor: lightTheme.$bg_color_secondary)
+
+    & > div
+        padding: 2px
+        @include lightTheme.flexCenter
+        color: white
+
+.barExplanation
+    display: flex
+    flex-flow: row nowrap
+    align-items: center
+    justify-content: space-between
+
+    & p
+        padding: 0
+        margin: 0
+        @include lightTheme.normalText($textColor: lightTheme.$primary_color)
+        font-weight: 600
+
+.readBlock, .notReadBlock, .totalBlock
+    height: 16px
+    display: flex
+    flex-flow: row nowrap
+    align-items: center
+    justify-content: space-between
+
+    & > * + *
+        margin-inline-start: 10px
+
+    & > div
+        height: 100%
+        width: 16px
+        @include lightTheme.flexCenter
+        @include lightTheme.boxShadow($shadowColor: lightTheme.$bg_color_secondary)
+
+    & > div > span
+        color: white
+        @include lightTheme.normalText($textColor: white)
+        font-weight: 600
+
+.readBlock
+    & > div
+        background-color: lightTheme.$bg_color_greenish
+.notReadBlock
+    & > div
+        background-color: lightTheme.$bg_color_redish
+
+.totalBlock
+    & > div
+        padding: 0 5px
+        width: auto
+        background-color: lightTheme.$bg_color_secondary
