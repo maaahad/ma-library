@@ -64,6 +64,7 @@ export default function Home() {
             className={Styles.code}
             href="https://github.com/maaahad/ma-library"
             target="_blank"
+            rel="noreferrer"
           >
             <BiCodeAlt />
           </a>
