@@ -14,10 +14,16 @@ import BooksTable from "../components/booksTable";
 import FilterNSort from "../components/filterNsort";
 import MainLeft from "../components/mainLeft";
 
+// in-house hooks
+import { useLibrary } from "../components/libraryProvider";
+import { useFlashMessage } from "../lib/hooks";
+
 // sass styls
 import Styles from "../styles/index.module.sass";
 
 export default function Home() {
+  // this will be added to display flash message on any changes to library
+  const displayFlashMessage = useFlashMessage();
   // this will control the View toggler
   const [gridView, toggleView] = useReducer((gridView) => !gridView, true);
 
@@ -77,6 +83,13 @@ export default function Home() {
           {gridView ? <BooksGrid /> : <BooksTable />}
         </div>
       </div>
+
+      {/* container for flash message */}
+      {displayFlashMessage && (
+        <div className={Styles.flashMessage}>
+          <h1>This is a flash message</h1>
+        </div>
+      )}
     </div>
   );
 }

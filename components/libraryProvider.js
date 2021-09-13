@@ -3,7 +3,7 @@ import React, { useState, createContext, useContext, useEffect } from "react";
 
 const LibraryContext = createContext();
 const useLibrary = () => useContext(LibraryContext);
-import { Book, getLibraryFromLocalStorage } from "../lib/library";
+import { Book, Library, getLibraryFromLocalStorage } from "../lib/library";
 
 export default function LibraryProvider({ children }) {
   const [library, setLibrary] = useState(getLibraryFromLocalStorage());
