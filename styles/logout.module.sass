@@ -1,0 +1,43 @@
+@use "lightTheme"
+
+.logoutButton
+    background-color: lightTheme.$bg_color_secondary
+    border: none
+    padding: 4px 20px
+    height: 28px
+    border-radius: 14px
+    display: flex
+    flex-flow: row nowrap
+    align-items: center
+    justify-content: space-between
+    transition: all .3s ease-in
+
+    @include lightTheme.subtitleText($textColor: white)
+    @include lightTheme.boxShadow($shadowColor: lightTheme.$bg_color_secondary)
+
+    & > * + *
+        margin-inline-start: 10px
+
+    & > svg
+        width: 18px
+        height: 18px
+        color: lightTheme.$color_ok
+        transition: all .3s ease-in
+
+    & > span
+        display: inline-block
+        text-transform: uppercase
+        color: white
+        font-weight: 500
+        transition: all .3s ease-in
+
+    &:hover
+        cursor: pointer
+        @include lightTheme.boxShadowHover($shadowColor: lightTheme.$bg_color_secondary)
+        // background-color: lightTheme.$bg_color_primary
+
+        & > span
+            color: lightTheme.$color_ok
+
+        & > svg
+            color: white
