@@ -3,7 +3,6 @@ import React, { useState, useReducer } from "react";
 // next
 
 // react-icons
-
 import { BiMoon, BiSun, BiCloud, BiData, BiLogInCircle } from "react-icons/bi";
 
 // components
@@ -27,9 +26,10 @@ export default function Nav() {
         <h4>MA-Library</h4>
       </div>
       <div className={Styles.right_nav}>
-        <div className={Styles.storage}>Storage</div>
-        <div className={Styles.theme}>theme</div>
-        <div className={Styles.login}>Login</div>
+        <button type="button" className={Styles.login}>
+          <span>Login</span>
+          <BiLogInCircle />
+        </button>
       </div>
     </nav>
   );

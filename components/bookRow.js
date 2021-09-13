@@ -49,9 +49,9 @@ export default function BookRow({ book }) {
     renderConfirmMessageModal();
   };
 
-  const onLike = () => {
-    updateBookLikes(book.id);
-  };
+  // const onLike = () => {
+  //   updateBookLikes(book.id);
+  // };
 
   return (
     <>
@@ -70,18 +70,18 @@ export default function BookRow({ book }) {
             toggleStatus={onToggleBookReadStatus}
           />
         </td>
-        <td className={Styles.likes}>
+        {/* <td className={Styles.likes}>
           <button type="button" onClick={onLike}>
             <BiLike />
             <span>{book.likes}</span>
           </button>
-        </td>
-        <td className={Styles.messages}>
+        </td> */}
+        {/* <td className={Styles.messages}>
           <button>
             <BiMessageRounded />
             <span>{book.comments.length}</span>
           </button>
-        </td>
+        </td> */}
         <td className={Styles.edit}>
           <button type="button" onClick={renderEditFormModal}>
             <BiEdit />
@@ -94,6 +94,7 @@ export default function BookRow({ book }) {
         </td>
       </tr>
 
+      {/* Sort this later div can't appear as a child of tbody */}
       {/* adding edit book form modal */}
       {renderEditForm && (
         <div className={Styles.editBookModal}>

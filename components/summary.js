@@ -11,40 +11,56 @@ import Styles from "../styles/summary.module.sass";
 // a custom hook for library summary
 const useLibrarySummary = () => {
   const { library } = useLibrary();
-  const totalBooks = library.length;
+  const totalBooks = library.books.length;
   let booksRead = 0;
-  library.forEach((book) => {
+  library.books.forEach((book) => {
     book.readStatus && booksRead++;
   });
   const booksNotRead = totalBooks - booksRead;
+  const readPercentage = (booksRead * 100) / totalBooks;
+  const notReadPercentage = (booksNotRead * 100) / totalBooks;
 
-  return [totalBooks, booksRead, booksNotRead];
+  return [
+    totalBooks,
+    booksRead,
+    booksNotRead,
+    readPercentage,
+    notReadPercentage,
+  ];
 };
 
 export default function Summary() {
-  const [totalBooks, booksRead, booksNotRead] = useLibrarySummary();
+  const [
+    totalBooks,
+    booksRead,
+    booksNotRead,
+    readPercentage,
+    notReadPercentage,
+  ] = useLibrarySummary();
   const statusBarContainerRef = useRef();
+
+  const styleStatusBar = (element, bgColor, widthPercentage) => {
+    element.style.display = "flex";
+    element.style.height = "100%";
+    element.style.width = `${widthPercentage}%`;
+    element.style.backgroundColor = bgColor;
+  };
 
   useEffect(() => {
     const statusBarContainer = statusBarContainerRef.current;
+    // read
     if (booksRead) {
-      statusBarContainer.children[0].style.display = "flex";
-      statusBarContainer.children[0].style.height = "100%";
-      statusBarContainer.children[0].style.width = `${
-        (booksRead * 100) / totalBooks
-      }%`;
-      statusBarContainer.children[0].style.backgroundColor = "#48e98a";
+      styleStatusBar(statusBarContainer.children[0], "#48e98a", readPercentage);
     } else {
       statusBarContainer.children[0].style.display = "none";
     }
-
+    // not read
     if (booksNotRead) {
-      statusBarContainer.children[1].style.display = "flex";
-      statusBarContainer.children[1].style.height = "100%";
-      statusBarContainer.children[1].style.width = `${
-        (booksNotRead * 100) / totalBooks
-      }%`;
-      statusBarContainer.children[1].style.backgroundColor = "#fe4551";
+      styleStatusBar(
+        statusBarContainer.children[1],
+        "#fe4551",
+        notReadPercentage
+      );
     } else {
       statusBarContainer.children[1].style.display = "none";
     }
@@ -55,7 +71,7 @@ export default function Summary() {
       <div className={Styles.barExplanation}>
         <div className={Styles.readBlock}>
           <p>Read</p>
-          <div>{/* <span>{booksRead}</span> */}</div>
+          <div></div>
         </div>
         <div className={Styles.totalBlock}>
           <p>Total Books</p>
@@ -65,7 +81,7 @@ export default function Summary() {
         </div>
         <div className={Styles.notReadBlock}>
           <p>Not Read</p>
-          <div>{/* <span>{booksNotRead}</span> */}</div>
+          <div></div>
         </div>
       </div>
       <div ref={statusBarContainerRef} className={Styles.statusBarContainer}>

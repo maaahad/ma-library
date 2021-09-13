@@ -1,6 +1,10 @@
 // react
 import React, { useReducer } from "react";
 
+// utilities
+// unique id generator
+import { v4 } from "uuid";
+
 // next
 
 // react icons
@@ -10,11 +14,12 @@ import Styles from "../../styles/toggleswitch.module.sass";
 
 export default function ToggleSwitch({
   checked,
-  id,
   checkedText,
   uncheckedText,
   toggleStatus = (f) => f,
 }) {
+  // This id will be used to label toggler properly
+  const id = v4();
   return (
     <div className={Styles.toggleSwitch}>
       <input

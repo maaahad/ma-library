@@ -20,11 +20,48 @@
     & > * + *
         margin-inline-start: 10px
 
+    // .storage
+    //     @include lightTheme.subtitleText($textColor: lightTheme.$secondary_color)
+
+    // .theme
+    //     @include lightTheme.subtitleText($textColor: lightTheme.$secondary_color)
+
     .login
-        @include lightTheme.subtitleText($textColor: lightTheme.$primary_color)
+        background-color: lightTheme.$bg_color_secondary
+        border: none
+        padding: 4px 20px
+        height: 28px
+        border-radius: 14px
+        display: flex
+        flex-flow: row nowrap
+        align-items: center
+        justify-content: space-between
+        transition: all .3s ease-in
 
-    .storage
-        @include lightTheme.subtitleText($textColor: lightTheme.$secondary_color)
+        @include lightTheme.subtitleText($textColor: white)
+        @include lightTheme.boxShadow($shadowColor: lightTheme.$bg_color_secondary)
 
-    .theme
-        @include lightTheme.subtitleText($textColor: lightTheme.$secondary_color)
+        & > * + *
+            margin-inline-start: 10px
+
+        & > svg
+            width: 18px
+            height: 18px
+            color: lightTheme.$color_ok
+
+        & > span
+            display: inline-block
+            text-transform: uppercase
+            color: white
+            font-weight: 500
+
+        &:hover
+            cursor: pointer
+            @include lightTheme.boxShadowHover($shadowColor: lightTheme.$bg_color_secondary)
+            // background-color: lightTheme.$bg_color_primary
+
+            & > span
+                color: lightTheme.$color_ok
+
+            & > svg
+                color: white

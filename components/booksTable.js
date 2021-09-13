@@ -14,17 +14,19 @@ export default function BooksTable() {
   return (
     <table className={Styles.booksTable}>
       <thead>
-        <th scope="col">Title</th>
-        <th scope="col">Author</th>
-        <th scope="col">Pages</th>
-        <th scope="col">Read Status</th>
-        <th scope="col">Likes</th>
-        <th scope="col">Coments</th>
-        <th scope="col">Edit</th>
-        <th scope="col">Delete</th>
+        <tr>
+          <th scope="col">Title</th>
+          <th scope="col">Author</th>
+          <th scope="col">Pages</th>
+          <th scope="col">Read Status</th>
+          {/* <th scope="col">Likes</th>
+          <th scope="col">Coments</th> */}
+          <th scope="col">Edit</th>
+          <th scope="col">Delete</th>
+        </tr>
       </thead>
       <tbody>
-        {library.map((book, index) => (
+        {library.books.map((book, index) => (
           <BookRow key={index} book={book} />
         ))}
       </tbody>

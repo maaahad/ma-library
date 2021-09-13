@@ -15,7 +15,6 @@ import FilterNSort from "../components/filterNsort";
 import MainLeft from "../components/mainLeft";
 
 // in-house hooks
-import { useLibrary } from "../components/libraryProvider";
 import { useFlashMessage } from "../lib/hooks";
 
 // sass styls
@@ -23,7 +22,7 @@ import Styles from "../styles/index.module.sass";
 
 export default function Home() {
   // this will be added to display flash message on any changes to library
-  const displayFlashMessage = useFlashMessage();
+  const [displayFlashMessage, flashMessage] = useFlashMessage();
   // this will control the View toggler
   const [gridView, toggleView] = useReducer((gridView) => !gridView, true);
 
@@ -77,9 +76,9 @@ export default function Home() {
         </div>
         {/* books list */}
         <div className={Styles.books}>
-          <div className={Styles.filterNsort}>
+          {/* <div className={Styles.filterNsort}>
             <FilterNSort />
-          </div>
+          </div> */}
           {gridView ? <BooksGrid /> : <BooksTable />}
         </div>
       </div>
@@ -87,7 +86,7 @@ export default function Home() {
       {/* container for flash message */}
       {displayFlashMessage && (
         <div className={Styles.flashMessage}>
-          <h1>This is a flash message</h1>
+          <h6>{flashMessage}</h6>
         </div>
       )}
     </div>

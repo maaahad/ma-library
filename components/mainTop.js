@@ -36,7 +36,7 @@ export default function MainTop({ gridView, toggleView = (f) => f }) {
   };
   const onClearLibrary = () => {
     // display confirmationMessage only if there is book available in the library
-    if (library.length) renderConfirmMessageModal();
+    if (library.books.length) renderConfirmMessageModal();
   };
 
   const onBookFormSubmit = ({ title, author, pages, readStatus }) => {

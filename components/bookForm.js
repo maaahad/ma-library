@@ -39,6 +39,14 @@ export default function BookForm({
     setInputsState({ [name]: value });
   };
 
+  const toggleReadStatus = () => {
+    setInputsState({ readStatus: !inputsState.readStatus });
+  };
+
+  const resetInputs = () => {
+    setInputsState({ title: "", author: "", pages: 1, readStatus: false });
+  };
+
   const onFormSubmit = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -49,14 +57,9 @@ export default function BookForm({
       readStatus: inputsState.readStatus,
       //   readStatus: form.elements.readStatus.checked,
     });
-  };
 
-  const toggleReadStatus = () => {
-    setInputsState({ readStatus: !inputsState.readStatus });
-  };
-
-  const resetInputs = () => {
-    setInputsState({ title: "", author: "", pages: 1, readStatus: false });
+    // reset form inputs
+    resetInputs();
   };
 
   return (
@@ -113,7 +116,6 @@ export default function BookForm({
           <div className={Styles.checkboxInputWrapper}>
             <ToggleSwitch
               checked={inputsState.readStatus}
-              id="bookForm"
               checkedText="Read"
               uncheckedText="Not Read"
               toggleStatus={toggleReadStatus}

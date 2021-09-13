@@ -14,41 +14,53 @@ export default function LibraryProvider({ children }) {
   };
 
   const clearLibrary = () => {
-    updateStateAndStorage([]);
+    updateStateAndStorage(new Library([], "cleared"));
   };
 
   const addBookToLibrary = ({ title, author, pages, readStatus }) => {
     const newBook = new Book(title, author, pages, readStatus);
     // TODO: need to optimize this
-    const newLibrary = [...library, newBook];
+    const newLibrary = new Library([...library.books, newBook], "added");
     updateStateAndStorage(newLibrary);
   };
 
   const removeBookFromLibrary = (id) => {
-    const newLibrary = library.filter((book) => book.id !== id);
+    const newLibrary = new Library(
+      library.books.filter((book) => book.id !== id),
+      "deleted"
+    );
     updateStateAndStorage(newLibrary);
   };
 
   const editBookToLibrary = (newBook) => {
-    const newLibrary = library.map((book) =>
-      book.id === newBook.id ? book.edit(newBook) : book
+    const newLibrary = new Library(
+      library.books.map((book) =>
+        book.id === newBook.id ? book.edit(newBook) : book
+      ),
+      "updated"
     );
     updateStateAndStorage(newLibrary);
   };
 
   const toggleBookReadStatus = (id) => {
-    const newLibrary = library.map((book) => {
-      book.id === id && book.toggleReadStatus();
-      return book;
-    });
+    const newLibrary = new Library(
+      library.books.map((book) => {
+        book.id === id && book.toggleReadStatus();
+        return book;
+      }),
+      "updated"
+    );
     updateStateAndStorage(newLibrary);
   };
 
   const updateBookLikes = (id) => {
-    const newLibrary = library.map((book) => {
-      book.id === id && book.incrementLikes();
-      return book;
-    });
+    const newLibrary = new Library(
+      library.books.map((book) => {
+        book.id === id && book.incrementLikes();
+        return book;
+      }),
+      "updated"
+    );
     updateStateAndStorage(newLibrary);
   };
 

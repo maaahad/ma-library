@@ -56,8 +56,34 @@
 
 .flashMessage
     position: fixed
-    bottom: 20px
+    width: 250px
+    height: 24px
+    background-color: lightTheme.$bg_color_redish
+    @include lightTheme.boxShadow($shadowColor: lightTheme.$bg_color_secondary)
+    bottom: 50px
     right: 20px
+    padding: 5px
+    z-index: lightTheme.$zindex_flash_message
+    @include lightTheme.flexCenter
+    transition: all .3s ease-in
+    animation: slidein 3s 1 ease-in-out
+
+    & > h6
+        margin: 0
+        padding: 0
+        @include lightTheme.subNormalText($textColor: white)
+        text-transform: uppercase
+
+// animation keyframes
+@keyframes slidein
+    from
+        right: -250px
+    25%
+        right: 20px
+    75%
+        right: 20px
+    to
+        right: -250px
 
 // add media condition to move the sourceNinfo to the right side of the window
 @media screen and (min-width: lightTheme.$breakpoint_md)

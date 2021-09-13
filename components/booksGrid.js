@@ -14,7 +14,7 @@ export default function BooksGrid() {
   const { library } = useLibrary();
   return (
     <div className={Styles.books}>
-      {library.map((book, i) => (
+      {library.books.map((book, i) => (
         <BookCard key={i} book={book} />
       ))}
     </div>
