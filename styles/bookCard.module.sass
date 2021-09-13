@@ -8,10 +8,10 @@
     align-items: stretch
     justify-content: space-between
 
-    .cardMedia
-        position: relative
-        flex: 1
-        max-height: 200px
+.cardMedia
+    position: relative
+    flex: 1
+    // max-height: 200px
 
 .cardHeader
     padding: 10px 15px
@@ -61,32 +61,6 @@
         // important to use adjacent sibling combinator
         & + .toggleWrapper
             background-color: lightTheme.$bg_color_greenish
-
-    // .edit
-    //     @include lightTheme.flexCenter
-    //     width: 120px
-    //     height: 20px
-    //     border: none
-    //     border-radius: 10px
-    //     padding: 0 10px
-    //     cursor: pointer
-    //     background-color: lightTheme.$bg_color_secondary
-    //     display: flex
-    //     flex-flow: row nowrap
-    //     align-items: center
-    //     justify-content: space-between
-
-    //     & > * + *
-    //         margin-inline-start: 10px
-
-    //     & > span
-    //         @include lightTheme.subsubNormalText($textColor: white)
-    //         text-transform: uppercase
-
-    //     & svg
-    //         width: 14px
-    //         height: 14px
-    //         color: white
 
 .cardActions
     padding: 10px 15px

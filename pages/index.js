@@ -45,6 +45,7 @@ export default function Home() {
           name="description"
           content="Library project developed for The Odin Project's Full Stack JavaScript Course"
         />
+        <link rel="icon" href="/favicon.ico" type="image/x-icon" />
       </Head>
       {/* the following will be part of main */}
 
