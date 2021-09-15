@@ -1,0 +1,59 @@
+@use "lightTheme"
+
+.footerContainer
+    @include lightTheme.normalText($textColor: lightTheme.$secondary_color)
+    height: 60px
+    padding: 10px 20px
+    display: flex
+    flex-flow: column wrap
+    align-items: center
+    justify-content: space-between
+    border-block-start: 1px solid lightTheme.$border_color_primary
+    background-color: lightTheme.$bg_color_primary
+
+    & > * + *
+        margin-block-start: 5px
+
+.socialLinks
+    display: flex
+    flex-flow: row nowrap
+    align-items: center
+    justify-content: spaceb-between
+
+    & > *  *
+        margin-inline-start: 10px
+
+    & > *
+        @include lightTheme.flexCenter
+
+    & > a > svg
+        height: 16px
+        width: 16px
+        color: lightTheme.$secondary_color
+
+    & > a:hover
+        & > svg
+            color: lightTheme.$primary_color
+
+    & > h6
+        margin: 0
+        padding: 0
+        text-transform: uppercase
+        @include lightTheme.normalText($textColor: lightTheme.$secondary_color)
+        font-weight: 500
+
+.copyright
+    margin: 0
+    padding: 0
+    @include lightTheme.flexCenter
+    @include lightTheme.normalText($textColor: lightTheme.$secondary_color)
+    font-weight: 300
+
+    & *
+        @include lightTheme.flexCenter
+    & > span
+        margin: 0 4px
+        & > svg
+            width: 16px
+            height: 16px
+            color: lightTheme.$color_warning

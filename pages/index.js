@@ -71,6 +71,7 @@ export default function Home() {
             href="https://github.com/maaahad/ma-library"
             target="_blank"
             rel="noreferrer"
+            title="Source Code"
           >
             <BiCodeAlt />
           </a>

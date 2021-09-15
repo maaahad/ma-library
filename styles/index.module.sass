@@ -1,13 +1,5 @@
 @use "lightTheme"
 
-// .container
-    // display: flex
-    // flex-flow: row nowrap
-    // align-items: flex-start
-    // justify-content: space-between
-    // & > * + *
-    //     margin-block-start: 20px
-
 .mainRight
     flex-flow: column wrap
     align-items: stretch
@@ -33,6 +25,7 @@
     align-items: center
     justify-content: space-around
     transition: all .3s linear
+    @include lightTheme.boxShadow($shadowColor: lightTheme.$bg_color_greenish)
 
     & > * + *
         margin-block-start: 5px
@@ -43,7 +36,12 @@
     & svg
         width: 16px
         height: 16px
-        color: white
+        color: lightTheme.$color_ok
+        transition: all .3s ease-in
+
+    & > *:hover
+        & svg
+            color: white
 
 .books
     display: flex

@@ -2,11 +2,9 @@
 // next
 import dynamic from "next/dynamic";
 
-// react icons
-import { BiCopyright } from "react-icons/bi";
-
 // components
 import Nav from "./nav";
+import Footer from "./footer";
 // import LibraryProvider from "./libraryProvider";
 const LibraryProvider = dynamic(() => import("./libraryProvider"), {
   ssr: false,
@@ -25,13 +23,7 @@ export default function Layout({ children }) {
         <main>{children}</main>
       </LibraryProvider>
       <footer>
-        <div>
-          <div>
-            <BiCopyright />
-          </div>
-          {/* make this a link */}
-          <span>Muhammed Ahad</span>
-        </div>
+        <Footer />
       </footer>
     </div>
   );
