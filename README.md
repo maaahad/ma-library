@@ -17,3 +17,10 @@ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+
+## Future work
+
+1. Use `memo` to avoid the rendering of full book list on any changes to library.
+2. Add category option to book.
+3. Add `Filter` and `Sort` functionality
+4. Accept `book cover` on book addition
